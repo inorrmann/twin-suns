@@ -2,6 +2,6 @@
 
 export default function PageWrapperComponent() {
   return <>
-  Test
+  Test About Page
   </>
 }
