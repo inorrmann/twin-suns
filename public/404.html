@@ -1,4 +1,4 @@
-<!-- public/404.html -->
 <script>
-  location.replace('/');
+  const redirect = '/' + location.hash.replace(/^#/, '');
+  location.replace(redirect);
 </script>
