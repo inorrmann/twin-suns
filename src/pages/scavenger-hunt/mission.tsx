@@ -13,7 +13,53 @@ export default function Mission() {
   const [unauthorizedUser, setUnauthorizedUser] = useState(false);
   const [input, setInput] = useState('');
 
-  const passwordArray = ['3548909098', '85676399023', '123'];
+  const passwordArray = [
+    'comm62510',
+    'comm62511',
+    'comm62512',
+    'comm62513',
+    'comm62514',
+    'comm62515',
+    'comm62516',
+    'comm62517',
+    'comm62518',
+    'comm62519',
+    'outpost62510',
+    'outpost62511',
+    'outpost62512',
+    'outpost62513',
+    'outpost62514',
+    'outpost62515',
+    'outpost62516',
+    'outpost62517',
+    'outpost62518',
+    'outpost62519',
+    'outpost62520',
+    'outpost62521',
+    'outpost62522',
+    'outpost62523',
+    'outpost62524',
+    'outpost62525',
+    'outpost62526',
+    'outpost62527',
+    'outpost62528',
+    'outpost62529',
+    '123'
+  ];
+  const bonusPasswordArray = [
+    'comm62510',
+    'comm62511',
+    'comm62512',
+    'comm62513',
+    'comm62514',
+    'comm62515',
+    'comm62516',
+    'comm62517',
+    'comm62518',
+    'comm62519',
+    '123'
+  ];
+  const missionIdArray = ['11111', '22222', '33333', '55555', '66666'];
 
   const missionArray = [
     {
@@ -42,12 +88,21 @@ export default function Mission() {
     }
   ]
 
+
+
   const selectedMission = missionArray.find(m => m.id === (id));
 
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (passwordArray.includes(input)) {
+    let authorized = false;
+    if (id == 'bonus' && bonusPasswordArray.includes(input)) {
+      authorized = true;
+    } else if (id && missionIdArray.includes(id) && passwordArray.includes(input)) {
+      authorized = true;
+    }
+
+    if (authorized) {
       setAuthenticated(true);
       setUnauthorizedUser(false);
     }
@@ -58,7 +113,7 @@ export default function Mission() {
 
   if (!authenticated) {
     return (
-      <>
+      <div>
         <form onSubmit={handleSubmit} style={{ textAlign: "center", marginTop: "2rem" }}>
           <label>
             Enter Password:
@@ -76,7 +131,7 @@ export default function Mission() {
             Incorrect password. Please try again.
           </p>
         )}
-      </>
+      </div>
     );
   }
 
