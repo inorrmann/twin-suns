@@ -42,7 +42,7 @@ export default function M1()
         </div>
         <br/>
         <p>
-          Task: Based on the clues above, determine your intended destination.
+          Task: Based on the clues above, determine the container's origin.
         </p>
         <br/>
 
