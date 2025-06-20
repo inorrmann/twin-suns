@@ -113,18 +113,27 @@ export default function Mission() {
 
   if (!authenticated) {
     return (
-      <div>
-        <form onSubmit={handleSubmit} style={{ textAlign: "center", marginTop: "2rem" }}>
-          <label>
-            Enter Password:
-            <input
-              type="password"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              style={{ marginLeft: "0.5rem" }}
-            />
-          </label>
-          <button type="submit" style={{ marginLeft: "1rem" }}>Submit</button>
+      <div className="sm:p-10">
+        <p className="text-2xl font-bold">
+          Authorized Personnel Only
+        </p>
+        <p className="text-xl">
+          Enter password to access mission
+        </p>
+        <form
+          onSubmit={handleSubmit}
+          className="mt-2 flex align-middle"
+        >
+          <input
+            type="password"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="text-2xl bg-gray-100 p-2 max-w-64"
+          />
+          <button
+            type="submit"
+            className="ml-4 bg-black text-white pb-2"
+          >Submit</button>
         </form>
         {unauthorizedUser && (
           <p style={{ color: "red", marginTop: "1rem" }}>

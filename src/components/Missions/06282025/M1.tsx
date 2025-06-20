@@ -18,7 +18,7 @@ export default function M1()
     <div className="bg-cover bg-center bg-fixed min-h-screen text-green-200 text-xl"
          style={{ backgroundImage: `url(${bgImage})` }}
     >
-      <div className="p-10 sm:p-20 sm:pb-10 ">
+      <div className="p-10 sm:p-20 sm:pb-10">
         <p className="text-3xl font-bold">Astrogation Crisis — Fragmented Nav Data</p>
         <br/>
         <p>
@@ -31,7 +31,7 @@ export default function M1()
         <p className="font-bold">
           Encrypted Destination Clues:
         </p>
-        <div className="bg-white/20 px-2">
+        <div className="bg-white/10 px-2">
           <p className="text-left">
             <b>LOC:</b> RIM.QUAD-EX <br/>
             <b>ENV:</b> -60°C surface avg | WHT-ICE-SWEEP<br/>
