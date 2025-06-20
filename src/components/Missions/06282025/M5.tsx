@@ -82,8 +82,7 @@ export default function M5()
               Possible Phrases:
             </p>
             <p className="text-left px-4">
-              * Trust no one.<br/>
-              * No cargo, no credits <br/>
+              * Trust no one<br/>
               * No cargo, no credits <br/>
               * Shadows speak louder <br/>
               * I'd never lie <br/>
