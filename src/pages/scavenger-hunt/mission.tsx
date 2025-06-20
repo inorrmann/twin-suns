@@ -81,39 +81,56 @@ export default function Mission() {
     'comm62519',
     '123'
   ];
-  const missionIdArray = ['11111', '22222', '33333', '44444', '55555', '66666', '77777'];
+  const missionIdArray = [
+    // '01101111-01101110-01100101',
+    // '01110100-01110111-01101111',
+    // '01110100-01101000-01110010-01100101-01100101',
+    // '01100110-01101111-01110101-01110010',
+    // '01100110-01101001-01110110-01100101',
+    // '01110011-01101001-01111000',
+    // '01110011-01100101-01110110-01100101-01101110'
+    '1', '2', '3', '4', '5', '6', '7'
+  ];
 
   const missionArray = [
     {
-      id: '11111',
+      id: '1',
+      // id: '01101111-01101110-01100101',
       mission: <M1/>
     },
     {
-      id: '22222',
+      id: '2',
+      // id: '01110100-01110111-01101111',
       mission: <M2/>
     },
     {
-      id: '33333',
+      id: '3',
+      // id: '01110100-01101000-01110010-01100101-01100101',
       mission: <M3/>
     },
     {
-      id: '44444',
+      id: '4',
+      // id: '01100110-01101111-01110101-01110010',
       mission: <M4/>
     },
     {
-      id: '55555',
+      id: '5',
+      // id: '01100110-01101001-01110110-01100101',
       mission: <M5/>
     },
     {
-      id: '66666',
+      id: '6',
+      // id: '01110011-01101001-01111000',
       mission: <M6/>
     },
     {
-      id: '77777',
+      id: '7',
+      // id: '01110011-01100101-01110110-01100101-01101110',
       mission: <M7/>
     },
     {
-      id: 'bonus',
+      id: 'b',
+      // id: '01100010-01101111-01101110-01110101-01110011',
       mission: <MBonus/>
     }
   ]
@@ -123,7 +140,8 @@ export default function Mission() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     let authorized = false;
-    if (id == 'bonus' && bonusPasswordArray.includes(input)) {
+    if (id == 'b' && bonusPasswordArray.includes(input)) {
+    // if (id == '01100010-01101111-01101110-01110101-01110011' && bonusPasswordArray.includes(input)) {
       authorized = true;
     } else if (id && missionIdArray.includes(id) && passwordArray.includes(input)) {
       authorized = true;

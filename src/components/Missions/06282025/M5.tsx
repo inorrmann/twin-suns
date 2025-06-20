@@ -10,7 +10,7 @@ export default function M5()
   }
 
   return (
-    <div className="bg-cover bg-center bg-fixed min-h-screen text-green-200 text-xl"
+    <div className="bg-cover bg-center bg-fixed min-h-screen text-green-200 text-xl object-contain"
          style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className="p-10 sm:p-20 sm:pb-10 ">
