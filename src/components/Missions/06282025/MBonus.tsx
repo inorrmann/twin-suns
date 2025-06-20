@@ -80,7 +80,7 @@ export default function MT()
         <button
           type="button"
           className="bg-black hover:bg-black"
-          onClick={() => window.open('https://www.google.com', '_blank', 'noopener, noreferrer')}
+          onClick={() => window.open('https://forms.gle/DHbjkPPeqqczx5bY8', '_blank', 'noopener, noreferrer')}
         >
           Submit Code Name
         </button>

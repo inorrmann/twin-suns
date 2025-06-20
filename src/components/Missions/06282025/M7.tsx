@@ -69,7 +69,7 @@ export default function M7()
         <button
           type="button"
           className="bg-black hover:bg-black"
-          onClick={() => window.open('https://www.google.com', '_blank', 'noopener, noreferrer')}
+          onClick={() => window.open('https://forms.gle/8XzZpSAR9ZTRUL2c8', '_blank', 'noopener, noreferrer')}
         >
           Submit Callsign
         </button>

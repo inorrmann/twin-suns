@@ -63,7 +63,7 @@ export default function M3()
         <button
           type="button"
           className="bg-black hover:bg-black"
-          onClick={() => window.open('https://www.google.com', '_blank', 'noopener, noreferrer')}
+          onClick={() => window.open('https://forms.gle/saWptUeeCUWMJ3hA8', '_blank', 'noopener, noreferrer')}
         >
           Submit First Line
         </button>

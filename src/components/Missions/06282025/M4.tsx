@@ -92,7 +92,7 @@ export default function M4()
         <button
           type="button"
           className="bg-black hover:bg-black"
-          onClick={() => window.open('https://www.google.com', '_blank', 'noopener, noreferrer')}
+          onClick={() => window.open('https://forms.gle/Ni1JbtrjJuCT6MkEA', '_blank', 'noopener, noreferrer')}
         >
           Submit Switch
         </button>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import bgImage from '../../../assets/screen.jpg';
+import bgImage from '../../assets/screen.jpg';
 
 export default function MT()
 {
