@@ -1,7 +1,7 @@
 import { useState } from "react";
 import bgImage from '../../../assets/screen.jpg';
 
-export default function M1()
+export default function MT()
 {
   const [showClue1, setShowClue1] = useState(false);
 

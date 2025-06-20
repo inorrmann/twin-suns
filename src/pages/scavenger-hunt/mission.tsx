@@ -24,6 +24,16 @@ export default function Mission() {
     'comm62517',
     'comm62518',
     'comm62519',
+    'outpost62500',
+    'outpost62501',
+    'outpost62502',
+    'outpost62503',
+    'outpost62504',
+    'outpost62505',
+    'outpost62506',
+    'outpost62507',
+    'outpost62508',
+    'outpost62509',
     'outpost62510',
     'outpost62511',
     'outpost62512',
@@ -44,6 +54,16 @@ export default function Mission() {
     'outpost62527',
     'outpost62528',
     'outpost62529',
+    'outpost62530',
+    'outpost62531',
+    'outpost62532',
+    'outpost62533',
+    'outpost62534',
+    'outpost62535',
+    'outpost62536',
+    'outpost62537',
+    'outpost62538',
+    'outpost62539',
     '123'
   ];
   const bonusPasswordArray = [
@@ -88,10 +108,7 @@ export default function Mission() {
     }
   ]
 
-
-
   const selectedMission = missionArray.find(m => m.id === (id));
-
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
