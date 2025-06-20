@@ -5,6 +5,8 @@ import M2 from "../../components/Missions/06282025/M2.tsx";
 import M3 from "../../components/Missions/06282025/M3.tsx";
 import M4 from "../../components/Missions/06282025/M4.tsx";
 import M5 from "../../components/Missions/06282025/M5.tsx";
+import M6 from "../../components/Missions/06282025/M6.tsx";
+import M7 from "../../components/Missions/06282025/M7.tsx";
 import MBonus from "../../components/Missions/06282025/MBonus.tsx";
 
 export default function Mission() {
@@ -79,7 +81,7 @@ export default function Mission() {
     'comm62519',
     '123'
   ];
-  const missionIdArray = ['11111', '22222', '33333', '55555', '66666'];
+  const missionIdArray = ['11111', '22222', '33333', '44444', '55555', '66666', '77777'];
 
   const missionArray = [
     {
@@ -101,6 +103,14 @@ export default function Mission() {
     {
       id: '55555',
       mission: <M5/>
+    },
+    {
+      id: '66666',
+      mission: <M6/>
+    },
+    {
+      id: '77777',
+      mission: <M7/>
     },
     {
       id: 'bonus',
