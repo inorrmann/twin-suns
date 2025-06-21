@@ -16,16 +16,16 @@ export default function Mission() {
   const [input, setInput] = useState('');
 
   const passwordArray = [
-    'comm62510',
-    'comm62511',
-    'comm62512',
-    'comm62513',
-    'comm62514',
-    'comm62515',
-    'comm62516',
-    'comm62517',
-    'comm62518',
-    'comm62519',
+    'comm62500',
+    'comm62501',
+    'comm62502',
+    'comm62503',
+    'comm62504',
+    'comm62505',
+    'comm62506',
+    'comm62507',
+    'comm62508',
+    'comm62509',
     'outpost62500',
     'outpost62501',
     'outpost62502',
@@ -76,20 +76,20 @@ export default function Mission() {
     'outpost62547',
     'outpost62548',
     'outpost62549',
-    '123'
+    'heidi'
   ];
   const bonusPasswordArray = [
-    'comm62510',
-    'comm62511',
-    'comm62512',
-    'comm62513',
-    'comm62514',
-    'comm62515',
-    'comm62516',
-    'comm62517',
-    'comm62518',
-    'comm62519',
-    '123'
+    'comm62500',
+    'comm62501',
+    'comm62502',
+    'comm62503',
+    'comm62504',
+    'comm62505',
+    'comm62506',
+    'comm62507',
+    'comm62508',
+    'comm62509',
+    'heidi'
   ];
   const missionIdArray = [
     '01101111-01101110-01100101',
