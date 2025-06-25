@@ -152,8 +152,8 @@ export default function Mission() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     let authorized = false;
-    if (id == 'b' && bonusPasswordArray.includes(input)) {
-    // if (id == '01100010-01101111-01101110-01110101-01110011' && bonusPasswordArray.includes(input)) {
+    // if (id == 'b' && bonusPasswordArray.includes(input)) {
+    if (id == '01100010-01101111-01101110-01110101-01110011' && bonusPasswordArray.includes(input)) {
       authorized = true;
     } else if (id && missionIdArray.includes(id) && passwordArray.includes(input)) {
       authorized = true;
