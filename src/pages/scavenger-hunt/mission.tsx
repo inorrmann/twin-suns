@@ -76,7 +76,8 @@ export default function Mission() {
     'outpost62547',
     'outpost62548',
     'outpost62549',
-    'heidi'
+    'heidi',
+    'broc123'
   ];
   const bonusPasswordArray = [
     'comm62500',
@@ -89,7 +90,8 @@ export default function Mission() {
     'comm62507',
     'comm62508',
     'comm62509',
-    'heidi'
+    'heidi',
+    'broc123'
   ];
   const missionIdArray = [
     '01101111-01101110-01100101',
