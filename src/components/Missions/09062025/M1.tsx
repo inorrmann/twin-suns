@@ -120,17 +120,17 @@ export default function M1()
               located near the entrance of Outpost 77.
             </p>
             <br/>
+            <br/>
+            <button
+              type="button"
+              className="bg-black hover:bg-black"
+              onClick={() => window.open('https://cerosoul.github.io/imperialpatternanalysis/', '_blank', 'noopener, noreferrer')}
+            >
+              Click here to complete the series
+            </button>
           </div>
         }
 
-        <br/>
-        <button
-          type="button"
-          className="bg-black hover:bg-black"
-          onClick={() => window.open('https://cerosoul.github.io/imperialpatternanalysis/', '_blank', 'noopener, noreferrer')}
-        >
-          Click here to complete the series
-        </button>
       </div>
     </div>
   );
