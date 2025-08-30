@@ -181,7 +181,7 @@ export default function MissionSept() {
           Authorized Personnel Only
         </p>
         <p className="text-xl">
-          Enter password to access mission
+          Enter access code to unlock archive
         </p>
         <form
           onSubmit={handleSubmit}
