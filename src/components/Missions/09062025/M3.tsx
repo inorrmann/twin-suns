@@ -96,7 +96,7 @@ export default function M3()
             </p>
             <br/>
             <p className="text-left">
-              Complete the decoded phrase that pointed them deeper into the canyon toward underground water.
+              Decipher the decoded phrase that pointed them deeper into the canyon toward underground water.
               When you finish, you will receive a password. Remember that password to unlock the next portion
               of the story, located at the Café.
             </p>
