@@ -52,3 +52,13 @@ export default tseslint.config({
   },
 })
 ```
+
+To run it locally:
+```
+yarn run dev
+```
+To build it and publish
+```
+yarn run build
+yarn run deploy
+```
