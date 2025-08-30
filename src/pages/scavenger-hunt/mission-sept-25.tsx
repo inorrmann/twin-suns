@@ -77,7 +77,7 @@ export default function MissionSept() {
     'part-5',
     'part-6',
     'part-7',
-    'part-8'
+    'epilogue'
   ];
 
   const missionArray = [
@@ -110,7 +110,7 @@ export default function MissionSept() {
       mission: <M7/>
     },
     {
-      id: 'part-8',
+      id: 'epilogue',
       mission: <M8/>
     }
   ]
