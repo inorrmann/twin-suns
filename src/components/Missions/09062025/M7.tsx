@@ -9,7 +9,7 @@ export default function M7()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.toLowerCase().trim() == 'twin suns 77') {
+    if (input.toLowerCase().trim() == 'sithcode') {
       setAuthenticated(true);
       setIncorrectPassword(false);
     } else {
@@ -22,13 +22,18 @@ export default function M7()
          style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className="p-10 sm:p-20 sm:pb-10 ">
-        <p className="text-3xl font-bold">TITLE GOES HERE</p>
+        <p className="text-3xl font-bold">ARRIVAL ON SALLAK</p>
+        <br/>
+        <br/>
+        <p className="font-bold text-2xl">
+          THE CIPHER VAULT
+        </p>
         <br/>
 
         {!authenticated &&
           <div className="bg-white/10 px-2">
             <p className="text-center">
-              <b> ENTER XXX TO CONTINUE
+              <b> ENTER THE PASSWORD FROM SITH CIPHER CHALLENGE TO CONTINUE
               </b>
               <br/>
               <br/>
@@ -66,23 +71,30 @@ export default function M7()
           <div>
             <br/>
             <p className="text-left">
-
+              Beneath the listening post lay a sealed chamber, its doors reinforced with plating and wires.
+              Stenciled across the metal in fading paint: Cipher Vault.
             </p>
             <br/>
             <p className="text-left">
-
+              Inside were crates of data drives, old transmission records, and sealed logs. Each was locked behind
+              layers of ciphers, as though the Rebels had been protecting something more than ordinary intelligence.
             </p>
             <br/>
             <p className="text-left">
-
+              As the settlers began decoding, they pieced together fragments: mentions of “contact” with something
+              native to Sallak, strange readings in the storms, and unexplained disappearances of scouts who had
+              gone too far from the outpost.
             </p>
             <br/>
             <p className="text-left">
-
+              The deeper they went, the clearer it became — Sallak had never been empty. The Rebels had uncovered
+              something they could not contain. And when they failed to stop it, they buried the truth here,
+              deep underground.
             </p>
             <br/>
             <p className="text-left">
-
+              Find the final phrase unlocking Outpost 77’s beacon. When you finish, you will receive a password.
+              Remember that password to unlock the next portion of the story, located in the Cantina.
             </p>
             <br/>
             <br/>
@@ -90,22 +102,12 @@ export default function M7()
             <button
               type="button"
               className="bg-black hover:bg-black"
-              onClick={() => window.open('https://cerosoul.github.io/imperialpatternanalysis/', '_blank', 'noopener, noreferrer')}
+              onClick={() => window.open('https://cerosoul.github.io/rebelciphervault/', '_blank', 'noopener, noreferrer')}
             >
-              Click here to
+              Click here to find the final phrase
             </button>
           </div>
         }
-
-
-        {/*<div className="bg-white/10 px-2">*/}
-        {/*  <p className="text-left">*/}
-        {/*    <b></b> SCREEN WITH TRANSPARENT BACKGROUND <br/>*/}
-
-        {/*  </p>*/}
-        {/*</div>*/}
-        {/*<br/>*/}
-
       </div>
     </div>
   );
