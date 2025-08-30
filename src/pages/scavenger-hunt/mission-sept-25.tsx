@@ -77,7 +77,7 @@ export default function MissionSept() {
     'part-5',
     'part-6',
     'part-7',
-    'epilogue'
+    'part-8'
   ];
 
   const missionArray = [
