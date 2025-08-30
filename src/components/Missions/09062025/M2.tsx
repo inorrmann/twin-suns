@@ -96,10 +96,9 @@ export default function M2()
             </p>
             <br/>
             <p className="text-left">
-              {/* TODO */}
               Complete the 3-letter code that reveals the directions to the canyon crossing. When you finish, you will
               receive a password. Remember that password to unlock the next portion of the story,
-              located XXX.
+              located at the center of the Marketplace.
             </p>
             <br/>
             <br/>
@@ -113,16 +112,6 @@ export default function M2()
             </button>
           </div>
         }
-
-
-        {/*<div className="bg-white/10 px-2">*/}
-        {/*  <p className="text-left">*/}
-        {/*    <b></b> SCREEN WITH TRANSPARENT BACKGROUND <br/>*/}
-
-        {/*  </p>*/}
-        {/*</div>*/}
-        {/*<br/>*/}
-
       </div>
     </div>
   );
