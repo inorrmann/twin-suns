@@ -188,7 +188,7 @@ export default function MissionSept() {
           className="mt-2 flex align-middle"
         >
           <input
-            type="password"
+            type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             className="text-2xl bg-gray-100 p-2 max-w-64"

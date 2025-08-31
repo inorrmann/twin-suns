@@ -43,7 +43,7 @@ export default function M5()
               className="pb-2 text-green-800"
             >
               <input
-                type="password"
+                type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="text-xl bg-gray-700 p-2 max-w-64"
