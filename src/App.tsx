@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import About from './pages/about.tsx'
 import Home from './pages/home.tsx'
 import Mission from "./pages/scavenger-hunt/mission.tsx";
-import MissionSept from "./pages/scavenger-hunt/mission-sept-25.tsx";
+import MissionSept from "./pages/scavenger-hunt/mission-25-09.tsx";
 import './App.css'
 
 export default function App() {

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import M1 from "../../components/Missions/06282025/M1.tsx";
-import M2 from "../../components/Missions/06282025/M2.tsx";
-import M3 from "../../components/Missions/06282025/M3.tsx";
-import M4 from "../../components/Missions/06282025/M4.tsx";
-import M5 from "../../components/Missions/06282025/M5.tsx";
-import M6 from "../../components/Missions/06282025/M6.tsx";
-import M7 from "../../components/Missions/06282025/M7.tsx";
-import MBonus from "../../components/Missions/06282025/MBonus.tsx";
+import M1 from "../../components/Missions/20250628/M1.tsx";
+import M2 from "../../components/Missions/20250628/M2.tsx";
+import M3 from "../../components/Missions/20250628/M3.tsx";
+import M4 from "../../components/Missions/20250628/M4.tsx";
+import M5 from "../../components/Missions/20250628/M5.tsx";
+import M6 from "../../components/Missions/20250628/M6.tsx";
+import M7 from "../../components/Missions/20250628/M7.tsx";
+import MBonus from "../../components/Missions/20250628/MBonus.tsx";
 
 export default function Mission() {
   const { id } = useParams();
