@@ -100,6 +100,7 @@ export default function M3()
               When you finish, you will receive a password. Remember that password to unlock the next portion
               of the story, located at the Café.
             </p>
+
             <br/>
             <br/>
 
