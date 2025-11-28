@@ -106,7 +106,7 @@ export default function M3()
             <button
               type="button"
               className="bg-black hover:bg-black"
-              onClick={() => window.open('https://cerosoul.github.io/rebelcodebreakerterminal/', '_blank', 'noopener, noreferrer')}
+              onClick={() => window.open('https://inorrmann.github.io/rebelcodebreakerterminal/', '_blank', 'noopener, noreferrer')}
             >
               Click here to decipher the cryptogram
             </button>

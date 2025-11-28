@@ -3,6 +3,7 @@ import About from './pages/about.tsx'
 import Home from './pages/home.tsx'
 import Mission from "./pages/scavenger-hunt/mission.tsx";
 import MissionSept from "./pages/scavenger-hunt/mission-25-09.tsx";
+import MissionSecondChapter from "./pages/scavenger-hunt/mission-26-02.tsx";
 import './App.css'
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/about" element={<About/>}/>
         <Route path="/scavenger-hunt/06282025/:id" element={<Mission/>}/>
         <Route path="/scavenger-hunt/09062025/:id" element={<MissionSept/>}/>
+        <Route path="/scavenger-hunt/02212026/:id" element={<MissionSecondChapter/>}/>
       </Routes>
     </>
   )

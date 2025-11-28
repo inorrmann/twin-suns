@@ -58,7 +58,7 @@ export default function M1()
         {!authenticated &&
           <div className="bg-white/10 px-2">
             <p className="text-center">
-              <b> ENTER NAME OF VENDOR WHERE YOU ACQUIRED THIS STORY TO CONTINUE
+              <b> ENTER NAME OF VENDOR WHERE YOU FOUND OUT ABOUT THIS STORY TO CONTINUE
               </b>
               <br/>
               <br/>

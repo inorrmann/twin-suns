@@ -102,7 +102,7 @@ export default function M7()
             <button
               type="button"
               className="bg-black hover:bg-black"
-              onClick={() => window.open('https://cerosoul.github.io/rebelciphervault/', '_blank', 'noopener, noreferrer')}
+              onClick={() => window.open('https://inorrmann.github.io/rebelciphervault/', '_blank', 'noopener, noreferrer')}
             >
               Click here to find the final phrase
             </button>
