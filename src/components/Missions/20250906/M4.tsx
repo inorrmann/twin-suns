@@ -104,7 +104,7 @@ export default function M4()
             <button
               type="button"
               className="bg-black hover:bg-black"
-              onClick={() => window.open('https://cerosoul.github.io/motivatoradjustmentprotocol/', '_blank', 'noopener, noreferrer')}
+              onClick={() => window.open('https://inorrmann.github.io/motivatoradjustmentprotocol/', '_blank', 'noopener, noreferrer')}
             >
               Click here to decrypt the code
             </button>
