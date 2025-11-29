@@ -7,7 +7,7 @@ export default function M1()
          style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className="p-10 sm:p-20 sm:pb-10 ">
-        <p className="text-3xl font-bold">ARRIVAL ON SALLAK - CHAPTER 2</p>
+        <p className="text-3xl font-bold">ECHOES OF THE ARRIVAL</p>
         <br/>
         <br/>
 
