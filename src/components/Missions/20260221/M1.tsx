@@ -153,17 +153,17 @@ export default function M1()
             <br/>
             <br/>
             <p className="text-left">
-              To continue, go to the entrance of Outpost 77 and find the small plate.
+              To continue, go to the entrance of Outpost 77, find the small plate, translate it, and scan it.
             </p>
             <br/>
             <br/>
-            <button
-              type="button"
-              className="bg-black hover:bg-black"
-              onClick={() => window.open('https://www.twinsunsranch.com/#/scavenger-hunt/02212026/part-2', '_blank', 'noopener, noreferrer')}
-            >
-              Click here to continue once you've translated the plate
-            </button>
+            {/*<button*/}
+            {/*  type="button"*/}
+            {/*  className="bg-black hover:bg-black"*/}
+            {/*  onClick={() => window.open('https://www.twinsunsranch.com/#/scavenger-hunt/02212026/part-2', '_blank', 'noopener, noreferrer')}*/}
+            {/*>*/}
+            {/*  Click here to continue once you've translated the plate*/}
+            {/*</button>*/}
           </div>
         }
 
