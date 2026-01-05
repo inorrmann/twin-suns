@@ -3,18 +3,13 @@ import bgImage from '../../../assets/screen.jpg';
 
 export default function M1()
 {
-  const [input, setInput] = useState('');
   const [authenticated, setAuthenticated] = useState(false);
   const [incorrectPassword, setIncorrectPassword] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.toLowerCase().trim() == 'twin suns 77') {
       setAuthenticated(true);
       setIncorrectPassword(false);
-    } else {
-      setIncorrectPassword(true);
-    }
   };
 
   return (
@@ -56,30 +51,13 @@ export default function M1()
         }
 
         {!authenticated &&
-          <div className="bg-white/10 px-2">
-            <p className="text-center">
-              <b> ENTER NAME OF VENDOR WHERE YOU FOUND OUT ABOUT THIS STORY TO CONTINUE
-              </b>
-              <br/>
-              <br/>
-            </p>
-            <form
-              onSubmit={handleSubmit}
-              className="pb-2 text-green-800"
-            >
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                className="text-xl bg-gray-700 p-2 max-w-64"
-              />
-              <button
-                type="submit"
-                className="ml-4 bg-black text-white pb-2"
-              >Submit
-              </button>
-            </form>
-          </div>
+          <button
+            type="button"
+            className="bg-black hover:bg-black"
+            onClick={handleSubmit}
+          >
+            Click here to continue
+          </button>
         }
 
         {incorrectPassword &&
@@ -95,7 +73,7 @@ export default function M1()
         {authenticated &&
           <div>
             <p className="font-bold text-2xl">
-              PART 1: LANDING
+            PART 1: LANDING
             </p>
             <br/>
             <p className="text-left">
