@@ -4,12 +4,10 @@ import {useState} from "react";
 export default function M1()
 {
   const [authenticated, setAuthenticated] = useState(false);
-  const [incorrectPassword, setIncorrectPassword] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
       setAuthenticated(true);
-      setIncorrectPassword(false);
   };
 
   return (
@@ -35,50 +33,16 @@ export default function M1()
               Now, as shadows move across the dunes, the settlers brace for what comes next…
             </p>
             <br/>
-          </div>
-        }
-
-        {!authenticated &&
-          // <div className="bg-white/10 px-2">
-          //   <p className="text-center">
-          //     <b> ENTER NAME OF VENDOR WHERE YOU FOUND OUT ABOUT THIS STORY TO CONTINUE
-          //     </b>
-          //     <br/>
-          //     <br/>
-          //   </p>
-          //   <form
-          //     onSubmit={handleSubmit}
-          //     className="pb-2 text-green-800"
-          //   >
-          //     <input
-          //       type="text"
-          //       value={input}
-          //       onChange={(e) => setInput(e.target.value)}
-          //       className="text-xl bg-gray-700 p-2 max-w-64"
-          //     />
-          //     <button
-          //       type="submit"
-          //       className="ml-4 bg-black text-white pb-2"
-          //     >Submit
-          //     </button>
-          //   </form>
-          // </div>
-          <button
-            type="button"
-            className="bg-black hover:bg-black"
-            onClick={handleSubmit}
-          >
-            Click here to continue
-          </button>
-        }
-
-        {incorrectPassword &&
-          <div>
             <br/>
-            <p className="text-2xl warning">
-              INCORRECT PASSWORD
-            </p>
             <br/>
+
+            <button
+              type="button"
+              className="bg-black hover:bg-black"
+              onClick={handleSubmit}
+            >
+              Click here to continue
+            </button>
           </div>
         }
 
@@ -104,7 +68,7 @@ export default function M1()
             <br/>
             <p className="text-left">
               Commander Hale slipped his helmet under his arm, brow furrowed with a mix of resolve and dread.
-              “We need to know what fell out there,” he said. “If it’s hostile, we prepare. If it’s… something else,
+              “We need to know what fell out there,” he said. “If it’s hostile, we prepare. If it’s... something else,
               we adapt.” His voice carried the weight of too many battles, yet there was something new beneath it —
               the uncertainty of facing an enemy that defied categorization.
             </p>
@@ -134,18 +98,11 @@ export default function M1()
               Lysa knelt beside a scorched panel. The sand around it had been disturbed — not by the crash,
               but by movement. Tracks. Humanoid. But elongated, the steps unnaturally spaced. Whatever had been
               inside had already left the wreck.
-            </p>
-            <br/>
-            <p className="text-left">
               And it had gone east — toward the tree line.
             </p>
             <br/>
             <p className="text-left">
-              The settlers exchanged grim looks. Whatever they were dealing with was mobile.
-            </p>
-            <br/>
-            <p className="text-left">
-              And intelligent.
+              The settlers exchanged grim looks. Whatever they were dealing with was mobile and intelligent.
             </p>
             <br/>
             <p className="text-left">
@@ -159,13 +116,6 @@ export default function M1()
             </p>
             <br/>
             <br/>
-            {/*<button*/}
-            {/*  type="button"*/}
-            {/*  className="bg-black hover:bg-black"*/}
-            {/*  onClick={() => window.open('https://www.twinsunsranch.com/#/scavenger-hunt/02212026/part-2', '_blank', 'noopener, noreferrer')}*/}
-            {/*>*/}
-            {/*  Click here to continue once you've translated the plate*/}
-            {/*</button>*/}
           </div>
         }
 
