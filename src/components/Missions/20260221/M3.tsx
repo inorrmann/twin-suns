@@ -9,7 +9,7 @@ export default function M3()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.toLowerCase().trim() == 'forcegrid') {
+    if (input.toLowerCase().trim() == 'silver dust') {
       setAuthenticated(true);
       setIncorrectPassword(false);
     } else {
@@ -26,14 +26,14 @@ export default function M3()
         <br/>
         <br/>
         <p className="font-bold text-2xl">
-          THE HIDDEN CHAMBER
+          PART 3: TRACKS IN THE SHIFTING SANDS
         </p>
         <br/>
 
         {!authenticated &&
           <div className="bg-white/10 px-2">
             <p className="text-center">
-              <b> ENTER PASSWORD FROM FORCE LOGIC GRID TO CONTINUE
+              <b> ENTER PASSWORD FROM THE DAMAGED CYLINDER TO CONTINUE
               </b>
               <br/>
               <br/>
@@ -71,36 +71,68 @@ export default function M3()
           <div>
             <br/>
             <p className="text-left">
-              The crash site yielded more than sand and jagged stone. As the settlers scouted outward, they discovered a
-              corroded durasteel hatch half-buried beneath a dune. Scratched into its surface, almost erased by time,
-              was the unmistakable symbol of the Rebellion.
+              The settlers followed the fading footprints across the endless dunes, the sun climbing higher and
+              heating the sand beneath their boots. The damaged cylinder they had discovered earlier lay between them,
+              its surface etched with the scrambled message they had finally deciphered. As Lysa read aloud
+              the decoded letters, R7-K4’s sensors hummed and whirred.
             </p>
             <br/>
             <p className="text-left">
-              With effort, they pried it open. Inside lay a narrow chamber of cold durasteel walls, its consoles
-              flickering faintly. A forgotten Rebel listening post. Sand poured through the cracks, coating the
-              floor in red dust, but one terminal still flickered with life.
+              With a soft click, the cylinder’s hidden mechanism engaged. A panel on its side slid open, revealing
+              a small, polished crystal inside. Light glimmered off the crystal, casting a narrow beam across the sand.
+              Etched into the dune itself, highlighted by the crystal’s glow, were faint glyphs that spelled out
+              a single phrase: “Silver Dust.” The desert wind shifted over the dunes, but the message remained,
+              luminous and unmistakable, as if the planet itself had revealed it.
             </p>
             <br/>
             <p className="text-left">
-              Lines of encrypted text glowed weakly on its screen — fragments of unfinished transmissions.
-              It was clear: the Rebels had been here before, but for some reason they never returned.
-              The settlers realized they might hold valuable intelligence, but the system was locked.
-              A cryptogram protected its records, perhaps the only way to keep the Empire from uncovering
-              what was hidden here.
+              Commander Hale stepped closer, shading his eyes against the sun. “So… this is what it wanted us to find,”
+              he said, nodding at the illuminated letters. “A clue. Directions, perhaps.”
             </p>
             <br/>
             <p className="text-left">
-              If they could break the code, they would not only know what the Rebels sought on Sallak, but also
-              why they abandoned this place to the storms.
+              One of the settlers brushed sand away from the glowing glyphs. “It’s guiding us,” the voice said.
+              “The tracks, the cylinder… all of it was meant to point us here.”
             </p>
             <br/>
             <p className="text-left">
-              Decipher the decoded phrase that pointed them deeper into the canyon toward underground water.
-              When you finish, you will receive a password. Remember that password to unlock the next portion
-              of the story, located at the Café.
+              Lysa crouched beside the crystal, scanning the surrounding dunes. “Silver Dust is clear enough,” she said,
+              “but it’s only part of the path. There’s more hidden here… another piece we’ll need to reach
+              the next location.”
             </p>
             <br/>
+            <p className="text-left">
+              Commander Hale nodded, his eyes narrowing against the glare of the sun. “Then we follow the first part,
+              but we stay alert. The desert isn’t giving us the full route—yet. Only by uncovering the rest of
+              the code will we know exactly where to go next.”
+            </p>
+            <br/>
+            <p className="text-left">
+              R7-K4 hovered over the glowing glyphs, its sensors tracing the faint energy patterns.
+              The droid’s dome pulsed in response, highlighting sequences of letters that seemed to shimmer and shift.
+              The settlers understood: the next clue was embedded within these patterns, waiting to be decoded.
+              Only once they solved it would the desert fully reveal the course ahead.
+            </p>
+            <br/>
+            <br/>
+            <p className="text-left">
+              Find the droid in the marketplace and decipher the decoded phrase embedded in the droid's energy patterns.
+              To decode the phrase, shift each letter back by 3 and reverse the letters of each word. When you finish,
+              remember the decoded phrase to unlock the next portion of the story, located at the Vault.
+              // TODO
+            </p>
+            <br/>
+
+            {/*<p className="text-left">*/}
+            {/*  “QHGGKL HJGLU”*/}
+
+            {/*  How it works:*/}
+
+            {/*  Players reverse the letters of each word → “KLGGHQ ULGJH”*/}
+
+            {/*  Then apply Caesar shift -3 → “Hidden Ridge”*/}
+            {/*</p>*/}
+            {/*<br/>*/}
             <br/>
 
             <button

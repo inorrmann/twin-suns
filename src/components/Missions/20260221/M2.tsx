@@ -9,7 +9,7 @@ export default function M2()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.toLowerCase().trim() == 'imperial37') {
+    if (input.toLowerCase().trim() == 'welcome') {
       setAuthenticated(true);
       setIncorrectPassword(false);
     } else {
@@ -26,14 +26,14 @@ export default function M2()
         <br/>
         <br/>
         <p className="font-bold text-2xl">
-          THE MONOLITH
+          PART 2: THE DESERT THAT REMEMBERS
         </p>
         <br/>
 
         {!authenticated &&
           <div className="bg-white/10 px-2">
             <p className="text-center">
-              <b> ENTER PASSWORD FROM IMPERIAL PATTERN ANALYSIS TO CONTINUE WITH THE STORY
+              <b> ENTER TRANSLATED WORD ON THE SMALL METAL PLATE
               </b>
               <br/>
               <br/>
@@ -71,34 +71,101 @@ export default function M2()
           <div>
             <br/>
             <p className="text-left">
-              The Marrowhawk came down hard in the sands of Sallak, throwing up a storm of dust. As the settlers
-              stumbled out, coughing and blinking against the light of two moons, the world stretched before them:
-              endless dunes broken by jagged cliffs of black stone.
+              The settlers followed the strange footprints eastward, leaving the shattered crash site behind as
+              the suns rose higher, scorching the dunes in white-orange light. Sallak’s desert stretched endlessly
+              before them: rolling sand ridges carved by relentless winds, jagged stone formations thrusting skyward
+              like the bones of buried titans, and pockets of shimmering heat that warped the horizon into
+              wavering mirages. It was a landscape that felt ancient — too ancient — as though entire civilizations
+              had come and gone beneath its dunes.
             </p>
             <br/>
             <p className="text-left">
-              It was there, half-buried at the edge of the crash site, that they found it — an ancient monolith,
-              taller than a man and carved with geometric runes that pulsed faintly as they approached. The surface
-              seemed to hum, vibrating with unseen energy. Some claimed it was a relic of the Old Republic.
-              Others whispered that it resonated with the Force.
+              Commander Hale raised a hand, signaling a halt. The tracks they’d been following were clearer here,
+              preserved in the stillness of the night before. They were humanoid but wrong — elongated, unevenly spaced,
+              as if the being moved with unnatural grace or unfamiliar weight. Each print pressed deep, far deeper than
+              a human step should. “Whatever walked away from that wreck,” Hale murmured, “wasn’t stumbling.
+              It was traveling with purpose.”
             </p>
             <br/>
             <p className="text-left">
-              Whatever its origin, the settlers soon realized the monolith held a secret. Symbols carved into its
-              face formed a shifting grid, the patterns changing as if testing their perception. Only by aligning
-              the runes correctly could the monolith’s message be unlocked.
+              R7-K4 rolled closer, its treads sinking slightly into the sand. The droid warbled in irritation;
+              its sensors were struggling again. The desert wasn’t empty — it hummed with static. Electrical
+              interference crackled across their datapads and wrist comms, producing half-formed readings,
+              corrupted glyphs, and bursts of distorted audio. The same interference that shrouded the forest in
+              the original draft now rose from the desert itself — a phenomenon native to Sallak.
             </p>
             <br/>
             <p className="text-left">
-              Kneeling in the dust, the pioneers traced the glowing lines with gloved fingers, murmuring to one
-              another as they pieced together the logic of the grid. Something ancient — and powerful — had marked
-              Sallak long before they had arrived.
+              Lysa Torren knelt beside a jagged rock outcrop. Strange etchings covered the stone’s surface, curling
+              in patterns eerily similar to the symbols scorched into the crashed vessel’s hull. But these were
+              not carved. They were weathered — eroded naturally over centuries, perhaps millennia.
+              “This can’t be coincidence,” she whispered. “These markings predate the crash by ages.
+              The visitor didn’t bring this language here.”
             </p>
             <br/>
             <p className="text-left">
-              Complete the 3-letter code that reveals the directions to the canyon crossing. When you finish, you will
-              receive a password. Remember that password to unlock the next portion of the story,
-              located at the center of the Marketplace.
+              Hale stepped closer. “Meaning it came <b>to</b> it.”
+            </p>
+            <br/>
+            <p className="text-left">
+              “Or was drawn to it,” Lysa corrected softly.
+            </p>
+            <br/>
+            <p className="text-left">
+              The wind shifted abruptly, carrying with it a low, droning resonance that vibrated in their bones.
+              It was faint — distant — but unmistakably rhythmic. Machinery? Breathing? A signal? It pulsed through
+              the dunes like a heartbeat buried deep in the planet’s crust.
+            </p>
+            <br/>
+            <p className="text-left">
+              The settlers exchanged uneasy glances. Sallak wasn’t lifeless. It was alive, in ways none of them
+              understood.
+            </p>
+            <br/>
+            <p className="text-left">
+              Ahead, the footprints veered sharply toward a narrow canyon carved between towering cliffs of sandstone.
+              At its mouth, something glinted — a small metallic cylinder half-buried in the drift. Lysa brushed
+              the sand from its surface and frowned. Scorch marks lined one side, its activation plate cracked,
+              but faint writing remained visible. Not Aurebesh. Not anything recognized by Republic or Imperial archives.
+              Yet its structure resembled an ancient cipher device — the kind wanderers used when venturing far beyond
+              safe hyperlanes.
+            </p>
+            <br/>
+            <p className="text-left">
+              “Someone left this,” Lysa said. “Whoever — or whatever — came out of that ship.”
+            </p>
+            <br/>
+            <p className="text-left">
+              Hale scanned the canyon’s shadowed interior. “Or someone following it.”
+            </p>
+            <br/>
+            <p className="text-left">
+              A sudden hush fell over the desert. No wind. No shifting sand. Only silence, tense and thick, as if
+              the dunes themselves were listening.
+            </p>
+            <br/>
+            <p className="text-left">
+              R7 emitted a wavering beep. They were not alone.
+            </p>
+            <br/>
+            <p className="text-left">
+              Something deep inside the canyon answered with a slow, resonant thrum.
+            </p>
+            <br/>
+            <p className="text-left">
+              And it was getting closer.
+            </p>
+            <br/>
+            <p className="text-left">
+              The damaged cylinder contains an incomplete message — the first clear evidence of communication from
+              the unknown visitor… or its pursuer.
+            </p>
+            <br/>
+            <br/>
+            <p className="text-left">
+              Decipher the incomplete message left in the cylinder.
+              When you finish, you will receive a password. Remember that password to unlock the next portion
+              of the story, located at the Café.
             </p>
             <br/>
             <br/>

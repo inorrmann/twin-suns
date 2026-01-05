@@ -26,14 +26,14 @@ export default function M5()
         <br/>
         <br/>
         <p className="font-bold text-2xl">
-          THE REBEL TERMINAL
+          PART 5: SHADOWS ON THE DUNES
         </p>
         <br/>
 
         {!authenticated &&
           <div className="bg-white/10 px-2">
             <p className="text-center">
-              <b> ENTER THE PASSWORD FROM MOTIVATOR ADJUSTMENT PROTOCOL TO CONTINUE
+              <b> ENTER THE PASSWORD FROM THE HIDDEN RIDGE'S SHARD'S SEQUENCE TO CONTINUE
               </b>
               <br/>
               <br/>
@@ -71,29 +71,86 @@ export default function M5()
           <div>
             <br/>
             <p className="text-left">
-              With a chirp of relief, R7-K4 came back online. Its dome spun, projecting a lattice of blue holographic
-              light into the stormy air. The settlers gathered close as the astromech displayed a web of signals —
-              interference from the planet’s crust, magnetic anomalies, and the faint echo of structures buried
-              in the dunes.
+              The sun dipped low, burning the horizon orange as the settlers trudged past the last stretch of
+              silver-dusted dunes. Hidden Ridge receded behind them, but the watcher they had glimpsed there
+              remained in their minds — a phantom on the cliffs, always just out of reach.
             </p>
             <br/>
             <p className="text-left">
-              But the grid was dense, tangled with static. To make sense of it, the settlers had to count the
-              interference lines, separating natural noise from the real pathways beneath. It was painstaking work,
-              but within the grid, patterns began to emerge: hidden tunnels, half-collapsed ruins, and the faint
-              glow of an energy source far below.
+              “This is it,” the commander said. “The signals from the shard point us toward the north dune field.
+              If we follow it, we should finally be close to Outpost 77.”
             </p>
             <br/>
             <p className="text-left">
-              The settlers worked carefully, mapping the threads of light. Each counted line drew them closer to
-              understanding the terrain around them — and closer to uncovering what else had once lived on Sallak.
+              They crested a high dune and froze. Across the expanse of sand, a movement — deliberate, cautious,
+              and fluid — shifted the shadows. The watcher. Only this time, it was closer. Its glowing eyes caught
+              the dying light, reflecting gold and silver across the sands.
             </p>
             <br/>
             <p className="text-left">
-              Decode the number sequence that unlocks the Rebel terminal. When you finish, you will receive a password.
-              Remember that password to unlock the next portion of the story, located near the office.
+              “Hold,” the commander whispered. “Don’t move.”
             </p>
             <br/>
+            <p className="text-left">
+              The creature — humanoid yet not quite human, its body wrapped in desert fabric that shimmered like sand —
+              crouched behind a ridge. Then, slowly, it raised one hand. Not in aggression, but in a gesture. A signal.
+              They were not enemies — at least, not yet.
+            </p>
+            <br/>
+            <p className="text-left">
+              Lysa stepped forward, holding up a scanner. The watcher tilted its head, studying her. Then it moved again,
+              a ripple in the dunes, and stopped at the crest of another ridge. With deliberate steps, it looked back
+              — almost beckoning — before disappearing briefly behind the sand.
+            </p>
+            <br/>
+            <p className="text-left">
+              The settlers exchanged uneasy glances. “Do we follow?” one whispered. The commander nodded.
+              “We have no choice. If they’re guiding us, it’s toward something important — maybe Outpost 77 itself.”
+            </p>
+            <br/>
+            <p className="text-left">
+              They pressed on, boots sinking into hot sand, following the watcher’s path across the dunes.
+              Each step brought them closer to the terrain they had only seen in glimpses from the shard’s projections.
+              Finally, as night fell and the twin moons of Sallak rose, silver light glinting across the dunes,
+              the settlers arrived at a small valley. At its center, half-buried in sand, lay the remnants of
+              a supply cache: crates, corroded tools, and a small metallic prism etched with strange glyphs.
+            </p>
+            <br/>
+            <p className="text-left">
+              Lysa knelt and carefully lifted the prism, rotating it in her hands. Some symbols glowed faintly under
+              the moonlight; others were worn smooth. “These markings…” she murmured, tracing them with her fingers.
+              “The number of symbols — it must be the key. Whoever left this wants us to count them, to unlock
+              the next step.”
+            </p>
+            <br/>
+            <p className="text-left">
+              The commander looked over her shoulder. “Then this is it. The prism is our guide — our next clue.
+              And it confirms the watcher has been leading us here, deliberately shaping our path.”
+            </p>
+            <br/>
+            <p className="text-left">
+              The settlers gathered around, counting the symbols carefully. Each glyph pulsed faintly as if responding
+              to their attention. The desert wind whispered through the valley, carrying the faint metallic tang of
+              the half-buried supplies. And somewhere, just beyond the ridge, the watcher’s eyes glimmered,
+              observing silently.
+            </p>
+            <br/>
+            <p className="text-left">
+              For the first time, the settlers felt the weight of both guidance and danger. Their next step was clear
+              — the prism held the password that would unlock the next chapter of their journey toward Outpost 77.
+              But the desert still held secrets, and the watcher was far from done testing them.
+            </p>
+            <br/>
+            <p className="text-left">
+              Count the number of Outpost 77 logos in the prism located right outside one of the Cantina's entrance.
+              Scan the prism and enter the number of logos you found to unlock the next portion of the story.
+            </p>
+            <br/>
+            <p className="text-left">
+
+            </p>
+            <br/>
+
             <br/>
 
             <button

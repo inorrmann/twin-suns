@@ -26,7 +26,7 @@ export default function M7()
         <br/>
         <br/>
         <p className="font-bold text-2xl">
-          THE CIPHER VAULT
+          PART 7: YOU WERE EXPECTED
         </p>
         <br/>
 
@@ -71,30 +71,94 @@ export default function M7()
           <div>
             <br/>
             <p className="text-left">
-              Beneath the listening post lay a sealed chamber, its doors reinforced with plating and wires.
-              Stenciled across the metal in fading paint: Cipher Vault.
+              The decoded message echoed in their thoughts as the settlers approached the ruins.
             </p>
             <br/>
             <p className="text-left">
-              Inside were crates of data drives, old transmission records, and sealed logs. Each was locked behind
-              layers of ciphers, as though the Rebels had been protecting something more than ordinary intelligence.
+              The outpost is not empty. You were expected.
             </p>
             <br/>
             <p className="text-left">
-              As the settlers began decoding, they pieced together fragments: mentions of “contact” with something
-              native to Sallak, strange readings in the storms, and unexplained disappearances of scouts who had
-              gone too far from the outpost.
+              Outpost 77 emerged fully from the dunes, its skeletal towers and half-buried structures casting
+              long shadows across the desert floor. What had once been a foothold of civilization,
+              now felt like a threshold — a place prepared, not abandoned.
+              The commander ordered a cautious advance. Power readings flickered across his display, faint but stable.
+              “Something is regulating the systems,” he said. “Not automated decay. Active control.”
+              Lysa knelt beside a terminal near the perimeter wall, brushing away layers of sand.
+              The interface responded instantly to her touch. “These systems weren’t left behind,” she said quietly.
+              “They were maintained. Someone wanted this place preserved… until a specific moment.”
             </p>
             <br/>
             <p className="text-left">
-              The deeper they went, the clearer it became — Sallak had never been empty. The Rebels had uncovered
-              something they could not contain. And when they failed to stop it, they buried the truth here,
-              deep underground.
+              They moved deeper into the outpost. Evidence of recent presence became impossible to ignore:
+              sealed doors reinforced against storms, scavenged components neatly removed rather than ripped away,
+              heat signatures lingering in sheltered corridors. Whoever had been here knew the outpost well —
+              and knew how to stay unseen.
+              Inside the central command structure, emergency lights flickered to life as the settlers entered.
+              The air was still, cool, and free of the grit that filled the desert outside.
+              A central console powered on without prompting, its screen flooding the chamber with pale blue light.
+              A recorded transmission began to play.
             </p>
             <br/>
             <p className="text-left">
-              Find the final phrase unlocking Outpost 77’s beacon. When you finish, you will receive a password.
-              Remember that password to unlock the next portion of the story, located in the Cantina.
+              Rebel scouts appeared in the hologram, their image fractured by interference.
+              They spoke of strange readings beneath Sallak’s sands, of storms that masked movement,
+              of orders to observe and report — never engage. Their voices cut out abruptly.
+              The image shifted.
+              A different figure stood in their place, wrapped in layered desert gear. Its silhouette matched
+              the watcher they had seen among the dunes. Its voice was calm, deliberate.
+              “You followed the signs,” it said. “You activated the grid. You decoded the warnings.”
+              The figure tilted its head slightly.
+              “We prepared Outpost 77 for those who would listen.”
+              The transmission ended.
+            </p>
+            <br/>
+            <p className="text-left">
+              Silence settled heavily over the chamber.
+              Lysa broke it first. “They didn’t just anticipate someone,” she said. “They anticipated us.”
+              The commander turned his attention to the far end of the chamber, where reinforced blast doors
+              stood sealed. Fresh power conduits fed into them, humming faintly. Warning glyphs glowed along their edges,
+              pulsing in the same rhythm as the beacon grid they had activated outside.
+              “They let us in,” he said. “But not all the way.”
+            </p>
+            <br/>
+            <p className="text-left">
+              A final alert blinked on the console — fragmented, encrypted, incomplete. Coordinates scrolled briefly
+              before dissolving into static, replaced by a repeating sequence of symbols. Another test. Another barrier.
+              Outpost 77 had not been built to welcome settlers.
+              It had been built to wait.
+              And whatever waited beyond those sealed doors was the reason the watcher had been guiding them all along.
+            </p>
+            <br/>
+            <p className="text-left">
+              The settlers spread through the central command structure, scanning consoles and checking every corridor.
+              Power flickered in some rooms, faint hums pulsed from machinery, and dusty storage bays held crates with
+              supplies long abandoned. One by one, they crossed off the locations they had visited: the vault,
+              the marketplace, the speeder garage, even the cantina hidden under the sand.
+              Yet as they stepped back and looked across the outpost, Lysa frowned. “We’ve seen most of it,
+              but not everything.” She gestured to a cluster of buildings at the far edge,
+              half-buried and almost invisible in the low moonlight. “There’s one section that hasn’t been touched —
+              untouched by the storms, untouched by us.”
+            </p>
+            <br/>
+            <p className="text-left">
+              The commander squinted. “That could be it. Whoever left this outpost prepared it carefully.
+              Maybe the most important place is last.”
+              A hush fell over the settlers. All the signs, the subtle guidance of the watcher, the still-active systems...
+              it pointed to one truth: the building they had yet to explore was critical.
+              It would hold whatever secrets the outpost had been keeping.
+            </p>
+            <br/>
+            <p className="text-left">
+              Lysa stepped forward and tapped a nearby console. Symbols flashed briefly, a prompt materializing:
+              “Identify the building not yet accessed to proceed.”
+              The settlers exchanged glances. They knew the answer.
+              The building that had remained silent through every exploration — the heart of the outpost waiting for them to arrive.
+            </p>
+            <br/>
+            <p className="text-left">
+              Find a map of Outpost 77 in the Marketplace and scan it to find which location was yet to be explored.
+              Enter the name of this location as the password to unlock the end of the story.
             </p>
             <br/>
             <br/>
@@ -102,7 +166,7 @@ export default function M7()
             <button
               type="button"
               className="bg-black hover:bg-black"
-              onClick={() => window.open('https://cerosoul.github.io/rebelciphervault/', '_blank', 'noopener, noreferrer')}
+              onClick={() => window.open('https://inorrmann.github.io/rebelciphervault/', '_blank', 'noopener, noreferrer')}
             >
               Click here to find the final phrase
             </button>
