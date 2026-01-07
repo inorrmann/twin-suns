@@ -33,7 +33,7 @@ export default function M2()
         {!authenticated &&
           <div className="bg-white/10 px-2">
             <p className="text-center">
-              <b> ENTER TRANSLATED WORD ON THE SMALL METAL PLATE
+              <b> ENTER TRANSLATED WORD FOUND ON THE SMALL METAL PLATE
               </b>
               <br/>
               <br/>
@@ -100,14 +100,7 @@ export default function M2()
               in patterns eerily similar to the symbols scorched into the crashed vessel’s hull. But these were
               not carved. They were weathered — eroded naturally over centuries, perhaps millennia.
               “This can’t be coincidence,” she whispered. “These markings predate the crash by ages.
-              The visitor didn’t bring this language here.”
-            </p>
-            <br/>
-            <p className="text-left">
-              Hale stepped closer. “Meaning it came <b>to</b> it.”
-            </p>
-            <br/>
-            <p className="text-left">
+              The visitor didn’t bring this language here.” Hale stepped closer. “Meaning it came to it.”
               “Or was drawn to it,” Lysa corrected softly.
             </p>
             <br/>
@@ -115,9 +108,6 @@ export default function M2()
               The wind shifted abruptly, carrying with it a low, droning resonance that vibrated in their bones.
               It was faint — distant — but unmistakably rhythmic. Machinery? Breathing? A signal? It pulsed through
               the dunes like a heartbeat buried deep in the planet’s crust.
-            </p>
-            <br/>
-            <p className="text-left">
               The settlers exchanged uneasy glances. Sallak wasn’t lifeless. It was alive, in ways none of them
               understood.
             </p>
@@ -129,36 +119,21 @@ export default function M2()
               but faint writing remained visible. Not Aurebesh. Not anything recognized by Republic or Imperial archives.
               Yet its structure resembled an ancient cipher device — the kind wanderers used when venturing far beyond
               safe hyperlanes.
-            </p>
-            <br/>
-            <p className="text-left">
               “Someone left this,” Lysa said. “Whoever — or whatever — came out of that ship.”
-            </p>
-            <br/>
-            <p className="text-left">
               Hale scanned the canyon’s shadowed interior. “Or someone following it.”
             </p>
             <br/>
             <p className="text-left">
               A sudden hush fell over the desert. No wind. No shifting sand. Only silence, tense and thick, as if
               the dunes themselves were listening.
-            </p>
-            <br/>
-            <p className="text-left">
               R7 emitted a wavering beep. They were not alone.
-            </p>
-            <br/>
-            <p className="text-left">
               Something deep inside the canyon answered with a slow, resonant thrum.
-            </p>
-            <br/>
-            <p className="text-left">
               And it was getting closer.
             </p>
             <br/>
             <p className="text-left">
-              The damaged cylinder contains an incomplete message — the first clear evidence of communication from
-              the unknown visitor… or its pursuer.
+              The damaged cylinder contained an incomplete message — the first clear evidence of communication from
+              the unknown visitor... or its pursuer.
             </p>
             <br/>
             <br/>
@@ -170,12 +145,23 @@ export default function M2()
             <br/>
             <br/>
 
+            {/*
+            Cryptogram:
+
+            Silver Dust in the Air
+
+            S*LV*R **ST ** TH* **R
+
+            Password: Silver Dust
+
+            */}
+
             <button
               type="button"
               className="bg-black hover:bg-black"
-              onClick={() => window.open('https://cerosoul.github.io/forcelogicgrid/', '_blank', 'noopener, noreferrer')}
+              onClick={() => window.open('https://inorrmann.github.io/cylinder-message/', '_blank', 'noopener, noreferrer')}
             >
-              Click here to decipher the 3-letter code
+              Click here to decipher the incomplete message
             </button>
           </div>
         }
