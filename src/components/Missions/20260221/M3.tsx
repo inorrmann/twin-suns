@@ -86,24 +86,24 @@ export default function M3()
             </p>
             <br/>
             <p className="text-left">
-              Commander Hale stepped closer, shading his eyes against the sun. “So… this is what it wanted us to find,”
+              Commander Hale stepped closer, shading his eyes against the sun. “So... this is what it wanted us to find,”
               he said, nodding at the illuminated letters. “A clue. Directions, perhaps.”
             </p>
             <br/>
             <p className="text-left">
               One of the settlers brushed sand away from the glowing glyphs. “It’s guiding us,” the voice said.
-              “The tracks, the cylinder… all of it was meant to point us here.”
+              “The tracks, the cylinder... all of it was meant to point us here.”
             </p>
             <br/>
             <p className="text-left">
               Lysa crouched beside the crystal, scanning the surrounding dunes. “Silver Dust is clear enough,” she said,
-              “but it’s only part of the path. There’s more hidden here… another piece we’ll need to reach
+              “but it’s only part of the path. There’s more hidden here... another piece we’ll need to reach
               the next location.”
             </p>
             <br/>
             <p className="text-left">
               Commander Hale nodded, his eyes narrowing against the glare of the sun. “Then we follow the first part,
-              but we stay alert. The desert isn’t giving us the full route—yet. Only by uncovering the rest of
+              but we stay alert. The desert isn’t giving us the full route. Only by uncovering the rest of
               the code will we know exactly where to go next.”
             </p>
             <br/>
@@ -119,7 +119,6 @@ export default function M3()
               Find the droid in the marketplace and decipher the decoded phrase embedded in the droid's energy patterns.
               To decode the phrase, shift each letter back by 3 and reverse the letters of each word. When you finish,
               remember the decoded phrase to unlock the next portion of the story, located at the Vault.
-              // TODO
             </p>
             <br/>
 
