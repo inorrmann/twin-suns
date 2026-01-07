@@ -83,9 +83,6 @@ export default function M4()
             <br/>
             <p className="text-left">
               Now they knew better.
-            </p>
-            <br/>
-            <p className="text-left">
               “Hidden Ridge,” the commander said quietly. “It’s not marked on any chart, but the dust leads straight
               to it.”
             </p>
@@ -94,30 +91,15 @@ export default function M4()
               The settlers moved through the heat shimmer, the dunes rising and falling like the breath of
               a sleeping titan. As they approached, the ridge sharpened into view — a steep wall of stone carved by
               centuries of storms, but with angles far too regular, too intentional, to be entirely natural.
-            </p>
-            <br/>
-            <p className="text-left">
               They found the last trace of silver dust pooled in a shallow hollow at the ridge’s base, as though
               the trail ended — or had been deliberately wiped. Lysa crouched, sifting the grains between her gloves.
-            </p>
-            <br/>
-            <p className="text-left">
               “This wasn’t scattered by the wind,” she whispered. “Someone brushed the trail out.”
             </p>
             <br/>
             <p className="text-left">
               That was the moment the commander lifted his hand, signaling silence.
-            </p>
-            <br/>
-            <p className="text-left">
               Above them, the ridge was not empty.
-            </p>
-            <br/>
-            <p className="text-left">
               A figure stood near the top — a silhouette against the pale sky, motionless, watching.
-            </p>
-            <br/>
-            <p className="text-left">
               Not Imperial. Not one of the settlers. Thin, wrapped in fabric the same color as the stone,
               face concealed behind a visor. A scavenger? A scout? Or the survivor who had left the silver dust trail?
             </p>
@@ -125,9 +107,6 @@ export default function M4()
             <p className="text-left">
               Before the settlers could call out, the figure moved. Quick. Precise. It stepped back and vanished
               behind the ridge with an agility no storm-worn wanderer should possess.
-            </p>
-            <br/>
-            <p className="text-left">
               The commander swore softly. “They were expecting us.”
             </p>
             <br/>
@@ -135,18 +114,9 @@ export default function M4()
               The team climbed the slope where the figure had stood. At the top, the desert opened wide,
               stretching toward distant buttes and mesas shimmering beneath the sun. No footprints marked the sand.
               No trail. Nothing.
-            </p>
-            <br/>
-            <p className="text-left">
               Except one thing.
-            </p>
-            <br/>
-            <p className="text-left">
               Half-buried in the sand was an object: a small, triangular shard of metal etched with unfamiliar
               geometric markings. Lysa lifted it carefully.
-            </p>
-            <br/>
-            <p className="text-left">
               “A navigation fragment,” she murmured. “But not from any system we know. And look—”
             </p>
             <br/>
@@ -157,14 +127,8 @@ export default function M4()
             <br/>
             <p className="text-left">
               “Whoever that was,” the commander said, “they’ve been inside the vaults before us.”
-            </p>
-            <br/>
-            <p className="text-left">
               The implications settled over the group like falling sand. Someone else knew the secrets buried on Sallak.
               Someone had been guiding them — or herding them.
-            </p>
-            <br/>
-            <p className="text-left">
               A gust of hot wind swept the ridge, carrying faint metallic echoes from the valley beyond.
               The shard pulsed once, as though reacting.
             </p>
@@ -172,13 +136,7 @@ export default function M4()
             <p className="text-left">
               Lysa looked toward the horizon. “This wasn’t meant to scare us off. It’s a direction.
               They want us to follow.”
-            </p>
-            <br/>
-            <p className="text-left">
               The commander nodded. “Then we follow. But cautiously.”
-            </p>
-            <br/>
-            <p className="text-left">
               Behind them, the ridge fell silent again, as though swallowing the figure they’d glimpsed.
               Ahead, the desert shimmered with heat — and invitation.
             </p>
@@ -186,9 +144,6 @@ export default function M4()
             <p className="text-left">
               The settlers descended the far side of Hidden Ridge, unaware that the watcher had reappeared behind
               a higher spire, observing their every step before disappearing once more into the sunlit haze.
-            </p>
-            <br/>
-            <p className="text-left">
               Their path had changed. They were no longer chasing clues. Someone was leading them.
             </p>
             <br/>
@@ -198,6 +153,9 @@ export default function M4()
               The shard atop Hidden Ridge emitted a subtle sequence of pulses — irregular, but with a pattern.
               The settlers recorded the numbers, but the last one was missing. Complete the series to follow
               the watcher’s path. When you finish, you will receive a password.
+            </p>
+            <br/>
+            <p className="text-left">
               Remember that password to unlock the next portion of the story, located near the Speeder Garage.
             </p>
             <br/>
@@ -208,7 +166,7 @@ export default function M4()
             <button
               type="button"
               className="bg-black hover:bg-black"
-              onClick={() => window.open('https://cerosoul.github.io/motivatoradjustmentprotocol/', '_blank', 'noopener, noreferrer')}
+              onClick={() => window.open('https://inorrmann.github.io/hidden-ridge-sequence/', '_blank', 'noopener, noreferrer')}
             >
               Click here to complete the series
             </button>
