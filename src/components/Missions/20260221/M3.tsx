@@ -117,30 +117,23 @@ export default function M3()
             <br/>
             <p className="text-left">
               Find the droid in the marketplace and decipher the decoded phrase embedded in the droid's energy patterns.
-              To decode the phrase, shift each letter back by 3 and reverse the letters of each word. When you finish,
-              remember the decoded phrase to unlock the next portion of the story, located at the Vault.
+            </p>
+            <br/>
+            <p className="text-left">
+              To decode the phrase, shift each letter back by 3 and reverse the letters of each word.
+            </p>
+            <br/>
+            <p className="text-left">
+              When you finish, remember the decoded phrase to unlock the next portion of the story, located at the Vault.
             </p>
             <br/>
 
-            {/*<p className="text-left">*/}
             {/*  “QHGGKL HJGLU”*/}
-
             {/*  How it works:*/}
-
             {/*  Players reverse the letters of each word → “KLGGHQ ULGJH”*/}
-
             {/*  Then apply Caesar shift -3 → “Hidden Ridge”*/}
-            {/*</p>*/}
-            {/*<br/>*/}
-            <br/>
 
-            <button
-              type="button"
-              className="bg-black hover:bg-black"
-              onClick={() => window.open('https://cerosoul.github.io/rebelcodebreakerterminal/', '_blank', 'noopener, noreferrer')}
-            >
-              Click here to decipher the cryptogram
-            </button>
+            <br/>
           </div>
         }
       </div>

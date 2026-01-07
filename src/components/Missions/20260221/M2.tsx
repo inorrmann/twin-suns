@@ -146,14 +146,8 @@ export default function M2()
             <br/>
 
             {/*
-            Cryptogram:
-
-            Silver Dust in the Air
-
-            S*LV*R **ST ** TH* **R
-
+            Cryptogram: SILVER DUST IS IN THE AIR
             Password: Silver Dust
-
             */}
 
             <button
