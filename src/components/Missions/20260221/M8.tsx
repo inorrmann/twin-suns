@@ -9,7 +9,7 @@ export default function M8()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.toLowerCase().trim() == 'vengeance') {
+    if (input.toLowerCase().trim() == 'cantina') {
       setAuthenticated(true);
       setIncorrectPassword(false);
     } else {
@@ -33,7 +33,7 @@ export default function M8()
         {!authenticated &&
           <div className="bg-white/10 px-2">
             <p className="text-center">
-              <b> ENTER THE BUILDING YET TO BE EXPLORED TO CONTINUE
+              <b> ENTER THE NAME OF BUILDING YET TO BE EXPLORED TO CONTINUE
               </b>
               <br/>
               <br/>
@@ -71,7 +71,7 @@ export default function M8()
           <div>
             <br/>
             <p className="text-left">
-              The Homestead lay ahead, half-buried in sand, its silhouette stark against the rising twin moons.
+              The Cantina lay ahead, half-buried in sand, its silhouette stark against the rising twin moons.
               Every dune they had crossed, every beacon pulse they had followed, had funneled them to this place —
               the outpost’s heart, carefully preserved and deliberately hidden.
               The settlers paused at the threshold, brushing windblown grit from the reinforced door.
@@ -102,14 +102,14 @@ export default function M8()
             </p>
             <br/>
             <p className="text-left">
-              The settlers spent hours examining the Homestead, cataloging its preserved supplies, restoring partial power,
+              The settlers spent hours examining the Cantina, cataloging its preserved supplies, restoring partial power,
               and deciphering the data archives. Every discovery confirmed the outpost had been deliberately safeguarded,
               its secrets layered like sediment in the desert.
             </p>
             <br/>
             <p className="text-left">
               As dawn broke over the dunes, painting the outpost in pale gold, a low hum resonated from a distant ridge
-              beyond the Homestead. Lysa’s scanner picked up a faint energy signature — subtle, deliberate,
+              beyond the Cantina. Lysa’s scanner picked up a faint energy signature — subtle, deliberate,
               and unlike anything they had encountered.
               The commander studied the readings. “Whatever left this place didn’t expect us to stop here forever.
               There’s more. Out there.”
@@ -126,7 +126,7 @@ export default function M8()
 
             <div className="bg-white/10 px-2">
               <p className="text-center text-2xl p-2">
-                <b></b> The story continues Saturday, February 27th, 2026. <br/>
+                <b></b> The story continues Saturday, June 27th, 2026. <br/>
               </p>
             </div>
             <br/>

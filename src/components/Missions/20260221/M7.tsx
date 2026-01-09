@@ -9,7 +9,7 @@ export default function M7()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.toLowerCase().trim() == 'sithcode') {
+    if (input.toLowerCase().trim() == 'expected') {
       setAuthenticated(true);
       setIncorrectPassword(false);
     } else {
@@ -26,14 +26,14 @@ export default function M7()
         <br/>
         <br/>
         <p className="font-bold text-2xl">
-          PART 7: YOU WERE EXPECTED
+          PART 7: PREPARED FOR ARRIVAL
         </p>
         <br/>
 
         {!authenticated &&
           <div className="bg-white/10 px-2">
             <p className="text-center">
-              <b> ENTER THE PASSWORD FROM SITH CIPHER CHALLENGE TO CONTINUE
+              <b> ENTER THE PASSWORD FROM THE DATA PANEL MESSAGE TO CONTINUE
               </b>
               <br/>
               <br/>
@@ -117,7 +117,8 @@ export default function M7()
               Silence settled heavily over the chamber.
               Lysa broke it first. “They didn’t just anticipate someone,” she said. “They anticipated us.”
               The commander turned his attention to the far end of the chamber, where reinforced blast doors
-              stood sealed. Fresh power conduits fed into them, humming faintly. Warning glyphs glowed along their edges,
+              stood sealed. Fresh power conduits fed into them, humming faintly. Warning glyphs glowed along their
+              edges,
               pulsing in the same rhythm as the beacon grid they had activated outside.
               “They let us in,” he said. “But not all the way.”
             </p>
@@ -134,7 +135,7 @@ export default function M7()
               The settlers spread through the central command structure, scanning consoles and checking every corridor.
               Power flickered in some rooms, faint hums pulsed from machinery, and dusty storage bays held crates with
               supplies long abandoned. One by one, they crossed off the locations they had visited: the vault,
-              the marketplace, the speeder garage, even the cantina hidden under the sand.
+              the marketplace, the speeder garage, even the homestead hidden under the sand.
               Yet as they stepped back and looked across the outpost, Lysa frowned. “We’ve seen most of it,
               but not everything.” She gestured to a cluster of buildings at the far edge,
               half-buried and almost invisible in the low moonlight. “There’s one section that hasn’t been touched —
@@ -144,7 +145,8 @@ export default function M7()
             <p className="text-left">
               The commander squinted. “That could be it. Whoever left this outpost prepared it carefully.
               Maybe the most important place is last.”
-              A hush fell over the settlers. All the signs, the subtle guidance of the watcher, the still-active systems...
+              A hush fell over the settlers. All the signs, the subtle guidance of the watcher, the still-active
+              systems...
               it pointed to one truth: the building they had yet to explore was critical.
               It would hold whatever secrets the outpost had been keeping.
             </p>
@@ -152,23 +154,28 @@ export default function M7()
             <p className="text-left">
               Lysa stepped forward and tapped a nearby console. Symbols flashed briefly, a prompt materializing:
               “Identify the building not yet accessed to proceed.”
+              Lysa pointed toward the darker edge of the settlement, where a small building stood by itself.
+              “Those are the refreshers. Practical. Necessary. But no one hides a welcoming message or a warning in
+              there.”
+              “Right,” Nate said. “So if the outpost wasn’t empty... if someone expected us...
+              where would they leave the next clue? Somewhere meant for people to gather, meant for voices.”
               The settlers exchanged glances. They knew the answer.
-              The building that had remained silent through every exploration — the heart of the outpost waiting for them to arrive.
+              The building that had remained silent through every exploration — the heart of the outpost waiting for
+              them to arrive.
             </p>
             <br/>
             <p className="text-left">
-              Find a map of Outpost 77 in the Marketplace and scan it to find which location was yet to be explored.
-              Enter the name of this location as the password to unlock the end of the story.
+              Study the map of Outpost 77. One building has not yet been explored.
+              Go there next — the name of that location is your final password.
             </p>
             <br/>
             <br/>
-
             <button
               type="button"
               className="bg-black hover:bg-black"
-              onClick={() => window.open('https://inorrmann.github.io/rebelciphervault/', '_blank', 'noopener, noreferrer')}
+              onClick={() => window.open('/outpost_map.jpg', '_blank')}
             >
-              Click here to find the final phrase
+              Outpost 77 Map
             </button>
           </div>
         }
