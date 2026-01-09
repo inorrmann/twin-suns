@@ -9,7 +9,7 @@ export default function M5()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.toLowerCase().trim() == 'master3152') {
+    if (input.toLowerCase().trim() == 'dusk') {
       setAuthenticated(true);
       setIncorrectPassword(false);
     } else {
@@ -33,7 +33,7 @@ export default function M5()
         {!authenticated &&
           <div className="bg-white/10 px-2">
             <p className="text-center">
-              <b> ENTER THE PASSWORD FROM THE HIDDEN RIDGE'S SHARD'S SEQUENCE TO CONTINUE
+              <b> ENTER THE PASSWORD FROM THE SHARD'S SEQUENCE IN HIDDEN RIDGE TO CONTINUE
               </b>
               <br/>
               <br/>
@@ -79,9 +79,6 @@ export default function M5()
             <p className="text-left">
               “This is it,” the commander said. “The signals from the shard point us toward the north dune field.
               If we follow it, we should finally be close to Outpost 77.”
-            </p>
-            <br/>
-            <p className="text-left">
               They crested a high dune and froze. Across the expanse of sand, a movement — deliberate, cautious,
               and fluid — shifted the shadows. The watcher. Only this time, it was closer. Its glowing eyes caught
               the dying light, reflecting gold and silver across the sands.
@@ -118,7 +115,7 @@ export default function M5()
             <br/>
             <p className="text-left">
               Lysa knelt and carefully lifted the prism, rotating it in her hands. Some symbols glowed faintly under
-              the moonlight; others were worn smooth. “These markings…” she murmured, tracing them with her fingers.
+              the moonlight; others were worn smooth. “These markings...” she murmured, tracing them with her fingers.
               “The number of symbols — it must be the key. Whoever left this wants us to count them, to unlock
               the next step.”
             </p>
@@ -142,24 +139,11 @@ export default function M5()
             </p>
             <br/>
             <p className="text-left">
-              Count the number of Outpost 77 logos in the prism located right outside one of the Cantina's entrance.
+              Count the number of Outpost 77 logos in the prism located near one of the Cantina's entrance.
               Scan the prism and enter the number of logos you found to unlock the next portion of the story.
             </p>
             <br/>
-            <p className="text-left">
-
-            </p>
             <br/>
-
-            <br/>
-
-            <button
-              type="button"
-              className="bg-black hover:bg-black"
-              onClick={() => window.open('https://cerosoul.github.io/astromechsensorarray/', '_blank', 'noopener, noreferrer')}
-            >
-              Click here to decode the number sequence
-            </button>
           </div>
         }
       </div>
