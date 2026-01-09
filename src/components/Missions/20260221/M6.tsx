@@ -9,7 +9,7 @@ export default function M6()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (input.toLowerCase().trim() == 'angletimer') {
+    if (input.toLowerCase().trim() == '13') {
       setAuthenticated(true);
       setIncorrectPassword(false);
     } else {
@@ -33,7 +33,7 @@ export default function M6()
         {!authenticated &&
           <div className="bg-white/10 px-2">
             <p className="text-center">
-              <b> ENTER THE PASSWORD FROM ASTROMECH SENSOR ARRAY TO CONTINUE
+              <b> ENTER THE NUMBER OF LOGOS IN THE PRISM TO CONTINUE
               </b>
               <br/>
               <br/>
@@ -43,7 +43,7 @@ export default function M6()
               className="pb-2 text-green-800"
             >
               <input
-                type="text"
+                type="number"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="text-xl bg-gray-700 p-2 max-w-64"
@@ -175,13 +175,20 @@ export default function M6()
             </p>
             <br/>
             <br/>
+            <p className="text-left">
+              Decode the message left in the data plate.
+              When you finish, you will receive a password. Remember that password to unlock the next portion
+              of the story, located at the Homestead.
+            </p>
+            <br/>
+            <br/>
 
             <button
               type="button"
               className="bg-black hover:bg-black"
-              onClick={() => window.open('https://cerosoul.github.io/sithcypherchallenge/', '_blank', 'noopener, noreferrer')}
+              onClick={() => window.open('https://inorrmann.github.io/beacon-message/', '_blank', 'noopener, noreferrer')}
             >
-              Click here to decipher the phrase
+              Click here to decode the message
             </button>
           </div>
         }
