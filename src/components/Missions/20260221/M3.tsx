@@ -86,7 +86,8 @@ export default function M3()
             </p>
             <br/>
             <p className="text-left">
-              Commander Hale stepped closer, shading his eyes against the sun. “So... this is what it wanted us to find,”
+              Commander Hale stepped closer, shading his eyes against the sun. “So... this is what it wanted us to
+              find,”
               he said, nodding at the illuminated letters. “A clue. Directions, perhaps.”
             </p>
             <br/>
@@ -124,7 +125,8 @@ export default function M3()
             </p>
             <br/>
             <p className="text-left">
-              When you finish, remember the decoded phrase to unlock the next portion of the story, located at the Vault.
+              When you finish, remember the decoded phrase to unlock the next portion of the story, located at the
+              Vault.
             </p>
             <br/>
 
