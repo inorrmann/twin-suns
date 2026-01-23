@@ -116,13 +116,13 @@ export default function M1()
             </p>
             <br/>
             <br/>
-            <button
-              type="button"
-              className="bg-black hover:bg-black"
-              onClick={() => window.open('/outpost_map.jpg', '_blank')}
-            >
-              Outpost 77 Map
-            </button>
+            {/*<button*/}
+            {/*  type="button"*/}
+            {/*  className="bg-black hover:bg-black"*/}
+            {/*  onClick={() => window.open('/outpost_map.jpg', '_blank')}*/}
+            {/*>*/}
+            {/*  Outpost 77 Map*/}
+            {/*</button>*/}
           </div>
         }
 

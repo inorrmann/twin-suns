@@ -47,6 +47,7 @@ export default function M5()
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="text-xl bg-gray-700 p-2 max-w-64"
+                style={{ backgroundColor: "white" }}
               />
               <button
                 type="submit"

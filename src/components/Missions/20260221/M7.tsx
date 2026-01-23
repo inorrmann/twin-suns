@@ -47,6 +47,7 @@ export default function M7()
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="text-xl bg-gray-700 p-2 max-w-64"
+                style={{ backgroundColor: "white" }}
               />
               <button
                 type="submit"
@@ -166,7 +167,7 @@ export default function M7()
             <br/>
             <p className="text-left">
               Study the map of Outpost 77. One building has not yet been explored.
-              Go there next — the name of that location is your final password.
+              Go in there next — the name of that location is your final password.
             </p>
             <br/>
             <br/>
