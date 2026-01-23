@@ -47,6 +47,7 @@ export default function M8()
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="text-xl bg-gray-700 p-2 max-w-64"
+                style={{ backgroundColor: "white" }}
               />
               <button
                 type="submit"
@@ -189,7 +190,7 @@ export default function M8()
 
             <div className="bg-white/10 px-2">
               <p className="text-center text-2xl p-2">
-                <b></b>Go to Twin Suns 77 to unlock the second part of this story<br/>
+                <b></b>Go back to Twin Suns 77 to unlock the second chapter of this story<br/>
               </p>
             </div>
             <br/>
