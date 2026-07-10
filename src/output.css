@@ -529,7 +529,7 @@ svg,
 video,
 canvas,
 audio,
-iframe,
+/*iframe,*/
 embed,
 object {
   display: block;

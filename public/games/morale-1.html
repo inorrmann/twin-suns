@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Plate Message</title>
+
+  <style>
+      html,
+      body {
+          width: 100%;
+          margin: 0;
+          padding: 0;
+      }
+
+      body {
+          font-family: 'Courier New', monospace;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          color: #00ff00;
+          padding: 10px;
+          box-sizing: border-box;
+      }
+
+      #game-container {
+          text-align: center;
+          background: rgba(0, 0, 0, 0.85);
+          padding: 20px;
+          border: 2px solid #00ff00;
+          border-radius: 8px;
+          width: 95%;
+          max-width: 800px;
+          box-sizing: border-box;
+      }
+
+      #phrase {
+          font-size: 20px;
+          margin: 20px 0;
+          white-space: normal;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 35px;
+          color: #ffff00;
+          justify-content: center;
+      }
+
+      .word-block {
+          white-space: nowrap;
+          display: inline-block;
+      }
+
+      #alphabet-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+          gap: 10px;
+          margin-top: 20px;
+      }
+
+      .letter-btn {
+          padding: 8px;
+          font-size: 16px;
+          background-color: #000;
+          color: #00ff00;
+          border: 1px solid #00ff00;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+
+      .letter-btn:disabled {
+          background-color: #003300;
+          color: #004400;
+          border-color: #004400;
+          cursor: not-allowed;
+      }
+
+      #status {
+          margin-top: 20px;
+          font-size: 18px;
+          font-weight: bold;
+      }
+  </style>
+</head>
+
+<body>
+
+<div id="game-container">
+  <h2>Why was the stormtrooper promoted?</h2>
+  <p>DECODE THE MESSAGE TO REVEAL THE PUNCHLINE</p>
+
+  <div id="phrase"></div>
+
+  <p>MISSED LETTERS: <span id="misses">0</span> / 5</p>
+
+  <div id="alphabet-container"></div>
+
+  <div id="status"></div>
+</div>
+
+<script>
+  const phrase = "HE FINALLY HIT HIS TARGET... WITH THE CODE.";
+  const glyphSet = ["⟒","⍜","⟟","⌖","⟊","⋔","⟴","⧫","◬","❖","⌬","⍦","⧗","⟆","⧘","⧙","⧚","⧛","⬡","⬢","⬣","⬤","⟁","⟡","✦","✧"];
+  const letterToGlyph = {};
+  [...new Set(phrase.replace(/[^A-Z]/g, ''))].forEach((l,i) => { letterToGlyph[l] = glyphSet[i % glyphSet.length]; });
+
+  let revealed = [];
+  let misses = 0;
+  let guessed = new Set();
+
+  function initGame() {
+    revealed = phrase.split("").map(ch => {
+      if (/[A-Z]/.test(ch)) return letterToGlyph[ch];
+      return ch;
+    });
+
+    misses = 0;
+    guessed.clear();
+
+    document.getElementById("misses").textContent = misses;
+    document.getElementById("status").textContent = "";
+
+    renderPhrase();
+    renderAlphabet();
+  }
+
+  function renderPhrase() {
+    const phraseContainer = document.getElementById("phrase");
+    phraseContainer.innerHTML = "";
+
+    const words = phrase.split(" ");
+
+    words.forEach(word => {
+      const wordSpan = document.createElement("span");
+      wordSpan.className = "word-block";
+
+      word.split("").forEach((letter,i) => {
+        const upper = letter.toUpperCase();
+        if (guessed.has(upper)) {
+          wordSpan.innerHTML += upper + " ";
+        } else {
+          wordSpan.innerHTML += (letterToGlyph[upper] || letter) + " ";
+        }
+      });
+      phraseContainer.appendChild(wordSpan);
+    });
+  }
+
+  function renderAlphabet() {
+    const container = document.getElementById("alphabet-container");
+    container.innerHTML = "";
+
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(l => {
+      const btn = document.createElement("button");
+      btn.textContent = l;
+      btn.className = "letter-btn";
+      btn.disabled = guessed.has(l);
+      btn.onclick = () => {
+        guessed.add(l);
+        // reveal glyphs corresponding to guessed letter
+        phrase.split("").forEach((ch,i) => {
+          if (ch.toUpperCase() === l) {
+            revealed[i] = ch;
+          }
+        });
+
+        if (!phrase.toUpperCase().includes(l)) {
+          misses++;
+          document.getElementById("misses").textContent = misses;
+          if (misses >= 5) {
+            document.getElementById("status").innerHTML = "TOO MANY FAILED ATTEMPTS.<br/>DATA PANEL RESETTING...";
+            document.getElementById("status").style.color = "#ff0000";
+            disableAllButtons();
+            setTimeout(initGame, 6000);
+            return;
+          }
+        }
+
+        renderPhrase();
+        renderAlphabet();
+        checkWin();
+      };
+      container.appendChild(btn);
+    });
+  }
+
+  function checkWin() {
+    const normalized = revealed.map(ch => {
+      if (Object.values(letterToGlyph).includes(ch)) return '_';
+      return ch;
+    }).join('').replace(/\s/g,'').toUpperCase();
+
+    const solutionNormalized = phrase.replace(/\s/g,'').toUpperCase();
+
+    if (normalized === solutionNormalized) {
+      document.getElementById("status").innerHTML = 'MESSAGE DECODED. PASSWORD: <strong>EXPECTED</strong><br/><br/>Go to the Homestead to continue.';
+      document.getElementById("status").style.color = "#00ff00";
+      disableAllButtons();
+    }
+  }
+
+  function disableAllButtons() {
+    document.querySelectorAll('.letter-btn').forEach(btn => btn.disabled = true);
+  }
+
+  initGame();
+</script>
+
+</body>
+</html>
