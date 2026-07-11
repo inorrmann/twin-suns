@@ -24,7 +24,7 @@ export default function A1()
           <br/>
 
           <iframe
-            src="/games/morale-10.html"
+            src="/games/morale-2.html"
             title="Data Plate Message"
             className="w-full h-screen border-0"
           />

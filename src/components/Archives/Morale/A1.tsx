@@ -34,7 +34,7 @@ export default function A1()
 
           <iframe
             src="/games/morale-1.html"
-            title="The unexpected promotion"
+            title="The message board"
             className="border-4"
             style={{
               width: "100%",

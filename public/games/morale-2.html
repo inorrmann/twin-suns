@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cylinder Message</title>
+  <title>The Jawa Playlist</title>
   <style>
       body {
           font-family: 'Courier New', monospace;
@@ -90,22 +90,22 @@
 </head>
 <body>
 <div id="game-container">
-  <h1>DAMAGED CYLINDER MESSAGE</h1>
-  <p>DECODE THE INCOMPLETE MESSAGE:</p>
+  <h2>What kind of music do Jawas like?</h2>
   <div id="encrypted-quote"></div>
-  <p>MATCH EACH NUMBER (1–4) WITH A UNIQUE LETTER TO DECODE THE MESSAGE.</p>
+  <br/>
+  <p>MATCH EACH NUMBER (1–5) WITH A UNIQUE LETTER TO DECODE THE MESSAGE.</p>
   <div id="mapping-container"></div>
   <button onclick="decodeQuote()">DECODE</button>
   <div id="decoded-quote"></div>
   <div id="result"></div>
 </div>
 <script>
-  const originalQuote = 'SILVER DUST IS IN THE AIR';
+  const originalQuote = 'HEAVY SCRAP METAL';
 
   // Step 1: pick only 5 letters for the cryptogram
   const uniqueLetters = [...new Set(originalQuote.replace(/[^A-Z]/g, '').split(''))];
   const shuffled = uniqueLetters.sort(() => Math.random() - 0.5);
-  const selectedLetters = shuffled.slice(0, 4); // exactly 5 hidden letters
+  const selectedLetters = shuffled.slice(0, 5); // exactly 5 hidden letters
 
   // Build cipher mapping: assign digits 0–5 to the 6 letters
   const cipherMapping = {};
@@ -143,7 +143,7 @@
     // Extract all digits 0–5 from encrypted words
     const numbersInUse = [...new Set(
       encryptedQuoteArray.join(' ').match(/\d/g) || []
-    )];
+    )].sort();
 
     numbersInUse.forEach(num => {
       const mappingDiv = document.createElement('div');
@@ -227,8 +227,7 @@
     const normalizedOriginal = originalQuote.replace(/\s+/g,'').toUpperCase();
 
     if (normalizedDecoded === normalizedOriginal) {
-      document.getElementById('result').innerHTML = 'MESSAGE DECIPHERED. PASSWORD: <strong>SILVER DUST</strong>' +
-        '<br/><br/> Go to the Café to continue.';
+      document.getElementById('result').innerHTML = 'MESSAGE DECIPHERED.';
       document.getElementById('result').style.color = '#00ff00';
     } else {
       document.getElementById('result').innerHTML = 'DECODING ERROR. TRY AGAIN.';
@@ -242,20 +241,6 @@
   document.querySelectorAll('input').forEach(input => {
     input.addEventListener('input', updateDecodedQuote);
   });
-
-
-  // function resizeParent() {
-  //   window.parent.postMessage(
-  //     {
-  //       type: "resize",
-  //       height: document.body.scrollHeight
-  //     },
-  //     "*"
-  //   );
-  // }
-  //
-  // window.onload = resizeParent;
-  // window.addEventListener("resize", resizeParent);
 </script>
 
 </body>

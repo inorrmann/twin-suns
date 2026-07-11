@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import A1 from "../../components/Archives/Morale/A1.tsx";
-import M2 from "../../components/Missions/20250628/M2.tsx";
-import M3 from "../../components/Missions/20250628/M3.tsx";
+import A2 from "../../components/Archives/Morale/A2.tsx";
+import A3 from "../../components/Archives/Morale/A3.tsx";
 import M4 from "../../components/Missions/20250628/M4.tsx";
 import M5 from "../../components/Missions/20250628/M5.tsx";
 import M6 from "../../components/Missions/20250628/M6.tsx";
@@ -18,14 +18,14 @@ export default function MoraleArchives() {
       archive: <A1/>
     },
     {
-      // id: '2',
-      id: '01110100-01110111-01101111',
-      archive: <M2/>
+      id: '2',
+      // id: '01110100-01110111-01101111',
+      archive: <A2/>
     },
     {
-      // id: '3',
-      id: '01110100-01101000-01110010-01100101-01100101',
-      archive: <M3/>
+      id: '3',
+      // id: '01110100-01101000-01110010-01100101-01100101',
+      archive: <A3/>
     },
     {
       // id: '4',
