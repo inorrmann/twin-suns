@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The message board</title>
+  <title>The garden debate</title>
 
   <style>
       html,
@@ -85,7 +85,7 @@
 <body>
 
 <div id="game-container">
-  <h2>Why was the stormtrooper promoted?</h2>
+  <h2>Why was Yoda such a good gardener?</h2>
   <p>DECODE THE MESSAGE TO REVEAL THE PUNCHLINE</p>
 
   <div id="phrase"></div>
@@ -98,7 +98,7 @@
 </div>
 
 <script>
-  const phrase = "HE FINALLY HIT HIS TARGET... WITH THE CODE.";
+  const phrase = "BECAUSE HE HAD A GREEN THUMB... AND GREEN EARS.";
   const glyphSet = ["⟒","⍜","⟟","⌖","⟊","⋔","⟴","⧫","◬","❖","⌬","⍦","⧗","⟆","⧘","⧙","⧚","⧛","⬡","⬢","⬣","⬤","⟁","⟡","✦","✧"];
   const letterToGlyph = {};
   [...new Set(phrase.replace(/[^A-Z]/g, ''))].forEach((l,i) => { letterToGlyph[l] = glyphSet[i % glyphSet.length]; });
