@@ -1,13 +1,12 @@
 import { useParams } from "react-router-dom";
 import A1 from "../../components/Archives/Settlers/A1.tsx";
-// import A1 from "../../components/Archives/Operations/A1.tsx";
+import A2 from "../../components/Archives/Settlers/A2.tsx";
+import A3 from "../../components/Archives/Settlers/A3.tsx";
 
 import M1 from "../../components/Missions/20260221/M2.tsx";
 import M2 from "../../components/Missions/20260221/M2.tsx";
 import M4 from "../../components/Missions/20260221/M4.tsx";
-import M5 from "../../components/Missions/20260221/M5.tsx";
 import M6 from "../../components/Missions/20260221/M6.tsx";
-import M7 from "../../components/Missions/20260221/M7.tsx";
 import M8 from "../../components/Missions/20260221/M8.tsx";
 
 export default function SettlersArchives() {
@@ -32,7 +31,7 @@ export default function SettlersArchives() {
     },
     {
       id: 'part-5',
-      archive: <M5/>
+      archive: <A2/>
     },
     {
       id: 'part-6',
@@ -40,7 +39,7 @@ export default function SettlersArchives() {
     },
     {
       id: 'part-7',
-      archive: <M7/>
+      archive: <A3/>
     },
     {
       id: 'part-8',

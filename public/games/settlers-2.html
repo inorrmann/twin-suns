@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Unlocked Door</title>
+  <style>
+      body {
+          font-family: 'Courier New', monospace;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin: 0;
+          background-size: cover;
+          color: #00ff00;
+          padding: 10px;
+      }
+      #game-container {
+          text-align: center;
+          background: rgba(0, 0, 0, 0.85);
+          padding: 20px;
+          border: 2px solid #00ff00;
+          border-radius: 8px;
+          max-width: 95%;
+          width: 800px;
+          box-sizing: border-box;
+      }
+      #encrypted-quote {
+          font-size: 18px;
+          margin: 20px 0;
+          white-space: normal;      /* allow natural wrapping */
+          word-break: normal;       /* keep whole words intact */
+          overflow-wrap: anywhere;  /* fallback for small screens */
+      }
+      #mapping-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+          gap: 12px;
+          margin: 20px 0;
+      }
+      .mapping {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+      }
+      .mapping label {
+          font-size: 14px;
+          margin-bottom: 4px;
+      }
+      input {
+          padding: 6px;
+          font-size: 16px;
+          background-color: #000;
+          color: #00ff00;
+          border: 1px solid #00ff00;
+          width: 45px;
+          text-transform: uppercase;
+          text-align: center;
+          border-radius: 4px;
+      }
+      button {
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          background-color: #00ff00;
+          color: #000;
+          border: none;
+          border-radius: 4px;
+          margin-top: 10px;
+      }
+      button:hover {
+          background-color: #00cc00;
+      }
+      #decoded-quote {
+          font-size: 18px;
+          margin: 20px 0;
+          white-space: pre-wrap;
+          word-wrap: break-word;
+          color: #ffff00;
+      }
+      #result {
+          margin-top: 20px;
+          font-weight: bold;
+          word-wrap: break-word;
+      }
+  </style>
+
+</head>
+<body>
+<div id="game-container">
+  <h2>Outpost 77 Unwritten Code</h2>
+  <div id="encrypted-quote"></div>
+  <br/>
+  <p>MATCH EACH NUMBER (1–5) WITH A UNIQUE LETTER TO DECODE THE MESSAGE.</p>
+  <div id="mapping-container"></div>
+  <button onclick="decodeQuote()">DECODE</button>
+  <div id="decoded-quote"></div>
+  <div id="result"></div>
+</div>
+<script>
+  const originalQuote = 'MERCY BUILDS STRONGER WALLS';
+
+  // Step 1: pick only 5 letters for the cryptogram
+  const uniqueLetters = [...new Set(originalQuote.replace(/[^A-Z]/g, '').split(''))];
+  const shuffled = uniqueLetters.sort(() => Math.random() - 0.5);
+  const selectedLetters = shuffled.slice(0, 5); // exactly 5 hidden letters
+
+  // Build cipher mapping: assign digits 0–5 to the 6 letters
+  const cipherMapping = {};
+  selectedLetters.forEach((letter, i) => {
+    cipherMapping[i+1] = letter; // number i maps to that letter
+  });
+
+  // Build reverse mapping: letter → digit
+  const plainToCipher = {};
+  for (let num in cipherMapping) {
+    plainToCipher[cipherMapping[num].charCodeAt(0) - 65] = parseInt(num);
+  }
+
+  // Step 2: Encrypt quote
+  // Build encrypted quote word-by-word
+  const encryptedQuoteArray = originalQuote.split(' ').map(word => {
+    return word.split('').map(char => {
+      if (char === '.' || char === ',') return char;
+      const plainIndex = char.charCodeAt(0) - 65;
+      const num = plainToCipher[plainIndex];
+      return num !== undefined ? num.toString() : char;
+    }).join('');
+  });
+
+  let userMapping = {};
+
+  function renderEncryptedQuote() {
+    document.getElementById('encrypted-quote').textContent = encryptedQuoteArray.join(' ');
+  }
+
+  function renderMappings() {
+    const mappingContainer = document.getElementById('mapping-container');
+    mappingContainer.innerHTML = '';
+
+    // Extract all digits 0–5 from encrypted words
+    const numbersInUse = [...new Set(
+      encryptedQuoteArray.join(' ').match(/\d/g) || []
+    )].sort();
+
+    numbersInUse.forEach(num => {
+      const mappingDiv = document.createElement('div');
+      mappingDiv.className = 'mapping';
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.maxLength = '1';
+      input.dataset.number = num;
+
+      mappingDiv.innerHTML = `<label>${num}</label>`;
+      mappingDiv.appendChild(input);
+      mappingContainer.appendChild(mappingDiv);
+    });
+  }
+
+  function updateDecodedQuote() {
+    const inputs = document.querySelectorAll('input');
+    const currentMappings = {};
+
+    // Collect live user mappings from inputs
+    inputs.forEach(input => {
+      const num = input.dataset.number;
+      const letter = input.value.toUpperCase();
+      if (letter) {
+        currentMappings[num] = letter;
+      }
+    });
+
+    // Build decoded text word-by-word
+    const decodedArray = encryptedQuoteArray.map(word =>
+      word.split('').map(char => {
+        if (/\d/.test(char)) {
+          // Show user's letter if they entered one, else keep the number
+          return currentMappings[char] || char;
+        }
+        return char;
+      }).join('')
+    );
+
+    document.getElementById('decoded-quote').textContent = decodedArray.join(' ');
+  }
+
+  function decodeQuote() {
+    const inputs = document.querySelectorAll('input');
+    const usedPlains = new Set();
+    userMapping = {};
+    let isValid = true;
+
+    // collect mappings
+    inputs.forEach(input => {
+      const num = input.dataset.number;
+      const plain = input.value.toUpperCase();
+      if (plain && !input.disabled) {
+        if (usedPlains.has(plain)) isValid = false;
+        usedPlains.add(plain);
+        userMapping[num] = plain;
+      }
+    });
+
+    if (!isValid) {
+      document.getElementById('result').innerHTML = 'MAPPING INVALID. NO REPEAT LETTERS.';
+      document.getElementById('result').style.color = '#ff0000';
+      return;
+    }
+
+    // build decoded quote word-by-word, character-by-character
+    const decodedWords = encryptedQuoteArray.map(word => {
+      return word.split('').map(char => {
+        if (/\d/.test(char)) {
+          return userMapping[char] || char; // replace digit if mapped
+        }
+        return char; // revealed letters or punctuation
+      }).join('');
+    });
+
+    const decoded = decodedWords.join(' ');
+    document.getElementById('decoded-quote').textContent = decoded;
+
+    // normalize for comparison
+    const normalizedDecoded = decoded.replace(/\s+/g,'').toUpperCase();
+    const normalizedOriginal = originalQuote.replace(/\s+/g,'').toUpperCase();
+
+    if (normalizedDecoded === normalizedOriginal) {
+      document.getElementById('result').innerHTML = 'MESSAGE DECIPHERED.';
+      document.getElementById('result').style.color = '#00ff00';
+    } else {
+      document.getElementById('result').innerHTML = 'DECODING ERROR. TRY AGAIN.';
+      document.getElementById('result').style.color = '#ff0000';
+    }
+  }
+
+  // Initialize
+  renderEncryptedQuote();
+  renderMappings();
+  document.querySelectorAll('input').forEach(input => {
+    input.addEventListener('input', updateDecodedQuote);
+  });
+</script>
+
+</body>
+</html>
