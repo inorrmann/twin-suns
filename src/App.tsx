@@ -17,7 +17,7 @@ export default function App() {
         {/*<Route path="/scavenger-hunt/06282025/:id" element={<Mission/>}/>*/}
         {/*<Route path="/scavenger-hunt/09062025/:id" element={<MissionSept/>}/>*/}
         {/*<Route path="/scavenger-hunt/02212026/:id" element={<MissionSecondChapter/>}/>*/}
-        <Route path="/scavenger-hunt/06282025/:id" element={<MoraleArchives/>}/>
+        <Route path="/scavenger-hunt/06282025/mission/:id" element={<MoraleArchives/>}/>
         <Route path="/scavenger-hunt/09062025/:id" element={<OperationsArchives/>}/>
         <Route path="/scavenger-hunt/02212026/:id" element={<SettlersArchives/>}/>
       </Routes>
