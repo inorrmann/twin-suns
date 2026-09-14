@@ -20,7 +20,8 @@ export default function SettlersArchives() {
       archive: <M1/>
     },
     {
-      id: 'part-2',
+      id: '2',
+      // id: 'part-2',
       archive: <M2/>
     },
     {
@@ -29,7 +30,8 @@ export default function SettlersArchives() {
       archive: <A1/>
     },
     {
-      id: 'part-4',
+      id: '4',
+      // id: 'part-4',
       archive: <M4/>
     },
     {

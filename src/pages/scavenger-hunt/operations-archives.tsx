@@ -19,7 +19,8 @@ export default function OperationsArchives() {
       archive: <M1/>
     },
     {
-      id: 'part-2',
+      id: '2',
+      // id: 'part-2',
       archive: <M2/>
     },
     {
@@ -28,7 +29,8 @@ export default function OperationsArchives() {
       archive: <A2/>
     },
     {
-      id: 'part-4',
+      id: '4',
+      // id: 'part-4',
       archive: <M4/>
     },
     {
@@ -37,15 +39,18 @@ export default function OperationsArchives() {
       archive: <A1/>
     },
     {
-      id: 'part-6',
+      id: '6',
+      // id: 'part-6',
       archive: <M6/>
     },
     {
-      id: 'part-7',
+      id: '7',
+      // id: 'part-7',
       archive: <M7/>
     },
     {
-      id: 'epilogue',
+      id: '8',
+      // id: 'epilogue',
       archive: <M8/>
     }
   ]
