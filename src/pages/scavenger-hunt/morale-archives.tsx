@@ -12,19 +12,20 @@ export default function MoraleArchives() {
   const { id } = useParams();
 
   const archiveArray = [
+    // Grey tags with red writing
     {
-      id: '1',
-      // id: '01101111-01101110-01100101',
+      // Tag at home: 1 - container
+      id: '01101111-01101110-01100101',
       archive: <A1/>
     },
     {
-      id: '2',
-      // id: '01110100-01110111-01101111',
+      // Tag at home: 2 - next to door
+      id: '01110100-01110111-01101111',
       archive: <A2/>
     },
     {
-      id: '3',
-      // id: '01110100-01101000-01110010-01100101-01100101',
+      // Tage at home: 3 - droid
+      id: '01110100-01101000-01110010-01100101-01100101',
       archive: <A3/>
     },
     {

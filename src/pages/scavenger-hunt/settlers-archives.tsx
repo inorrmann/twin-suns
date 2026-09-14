@@ -13,7 +13,9 @@ export default function SettlersArchives() {
   const { id } = useParams();
 
   const archiveArray = [
+    // Red tags with black writing
     {
+      // *** Tag at home: 1 - Table  *** NOT LINKED
       id: 'part-1',
       archive: <M1/>
     },
@@ -22,6 +24,7 @@ export default function SettlersArchives() {
       archive: <M2/>
     },
     {
+      // Café
       id: 'part-3',
       archive: <A1/>
     },
@@ -30,19 +33,24 @@ export default function SettlersArchives() {
       archive: <M4/>
     },
     {
+      // Speeder garage bottom right door
       id: 'part-5',
       archive: <A2/>
     },
     {
+      // *** Tag at home - red & black , nothing on the back *** NOT LINKED
       id: 'part-6',
       archive: <M6/>
     },
     {
+      // Homestead door
       id: 'part-7',
       archive: <A3/>
     },
     {
-      id: 'part-8',
+      // *** Cantina - by Kloonta Classic *** NOT LINKED
+      id: '8',
+      // id: 'part-8',
       archive: <M8/>
     }
   ]

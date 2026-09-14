@@ -12,7 +12,9 @@ export default function OperationsArchives() {
   const { id } = useParams();
 
   const archiveArray = [
+    // Red tags with Gold writing
     {
+      // *** Tag at home:  1 - Twin Suns 77 *** NOT LINKED
       id: 'part-1',
       archive: <M1/>
     },
@@ -21,7 +23,7 @@ export default function OperationsArchives() {
       archive: <M2/>
     },
     {
-      // moisture vaporator
+      // Moisture Vaporator
       id: 'part-3',
       archive: <A2/>
     },
@@ -30,7 +32,7 @@ export default function OperationsArchives() {
       archive: <M4/>
     },
     {
-      // speeder bike top left door
+      // Speeder bike top left door
       id: 'part-5',
       archive: <A1/>
     },
