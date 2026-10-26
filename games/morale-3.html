@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- letter order -->
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The garden debate</title>
+  <title>The Green Thumb</title>
 
   <style>
       html,
@@ -35,14 +37,14 @@
       }
 
       #phrase {
-          font-size: 20px;
-          margin: 20px 0;
-          white-space: normal;
+          font-size: 22px;
+          margin: 25px 0;
+          color: #ffff00;
           display: flex;
           flex-wrap: wrap;
-          gap: 35px;
-          color: #ffff00;
           justify-content: center;
+          gap: 18px;
+          line-height: 1.8;
       }
 
       .word-block {
@@ -50,16 +52,33 @@
           display: inline-block;
       }
 
-      #alphabet-container {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
-          gap: 10px;
-          margin-top: 20px;
+      .letter-slot {
+          display: inline-block;
+          width: 18px;
+          text-align: center;
+          margin: 0 2px;
+      }
+
+      .punctuation {
+          display: inline-block;
+          width: auto;
+          margin: 0 1px;
+      }
+
+      #letter-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 25px;
       }
 
       .letter-btn {
-          padding: 8px;
-          font-size: 16px;
+          width: 40px;
+          height: 40px;
+          font-family: 'Courier New', monospace;
+          font-size: 17px;
+          font-weight: bold;
           background-color: #000;
           color: #00ff00;
           border: 1px solid #00ff00;
@@ -67,10 +86,53 @@
           cursor: pointer;
       }
 
-      .letter-btn:disabled {
+      .letter-btn:hover:not(:disabled) {
           background-color: #003300;
-          color: #004400;
-          border-color: #004400;
+      }
+
+      .letter-btn.used {
+          color: #555;
+          border-color: #444;
+          background-color: #111;
+          cursor: not-allowed;
+      }
+
+      .letter-btn.wrong {
+          color: #ff0000;
+          border-color: #ff0000;
+          background-color: #220000;
+      }
+
+      #errors {
+          margin-top: 20px;
+          font-size: 16px;
+      }
+
+      /* HINT BUTTON */
+      #hint-container {
+          margin-top: 35px;
+      }
+
+      #hint-btn {
+          padding: 10px 20px;
+          font-family: 'Courier New', monospace;
+          font-size: 16px;
+          font-weight: bold;
+          background-color: #000;
+          color: #ffff00;
+          border: 1px solid #ffff00;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+
+      #hint-btn:hover:not(:disabled) {
+          background-color: #333300;
+      }
+
+      #hint-btn:disabled {
+          background-color: #111;
+          color: #444;
+          border-color: #333;
           cursor: not-allowed;
       }
 
@@ -78,6 +140,12 @@
           margin-top: 20px;
           font-size: 18px;
           font-weight: bold;
+          min-height: 45px;
+      }
+
+      #countdown {
+          font-size: 20px;
+          margin-top: 8px;
       }
   </style>
 </head>
@@ -85,124 +153,414 @@
 <body>
 
 <div id="game-container">
+
   <h2>Why was Yoda such a good gardener?</h2>
-  <p>DECODE THE MESSAGE TO REVEAL THE PUNCHLINE</p>
+
+  <p>DECODE THE PUNCHLINE — SELECT THE LETTERS IN ORDER</p>
 
   <div id="phrase"></div>
 
-  <p>MISSED LETTERS: <span id="misses">0</span> / 5</p>
+  <p id="errors">
+    ERRORS: <span id="error-count">0</span> / 5
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    HINTS: <span id="hint-count">0</span> / 3
+  </p>
 
-  <div id="alphabet-container"></div>
+  <div id="letter-container"></div>
+
+  <div id="hint-container">
+    <button id="hint-btn" onclick="useHint()">HINT</button>
+  </div>
 
   <div id="status"></div>
+  <div id="countdown"></div>
+
 </div>
 
 <script>
-  const phrase = "BECAUSE HE HAD A GREEN THUMB... AND GREEN EARS.";
-  const glyphSet = ["⟒","⍜","⟟","⌖","⟊","⋔","⟴","⧫","◬","❖","⌬","⍦","⧗","⟆","⧘","⧙","⧚","⧛","⬡","⬢","⬣","⬤","⟁","⟡","✦","✧"];
-  const letterToGlyph = {};
-  [...new Set(phrase.replace(/[^A-Z]/g, ''))].forEach((l,i) => { letterToGlyph[l] = glyphSet[i % glyphSet.length]; });
 
-  let revealed = [];
-  let misses = 0;
-  let guessed = new Set();
+  // ============================================================
+  // PUZZLE
+  // ============================================================
+
+  const phrase =
+    "BECAUSE HE HAD A GREEN THUMB... AND GREEN EARS.";
+
+  const MAX_ERRORS = 5;
+  const MAX_HINTS = 3;
+  const RESET_SECONDS = 5;
+
+  let currentPosition = 0;
+  let errors = 0;
+  let hintsUsed = 0;
+  let usedLetterIndexes = new Set();
+  let resetting = false;
+
+
+  // ============================================================
+  // INITIALIZE GAME
+  // ============================================================
 
   function initGame() {
-    revealed = phrase.split("").map(ch => {
-      if (/[A-Z]/.test(ch)) return letterToGlyph[ch];
-      return ch;
-    });
 
-    misses = 0;
-    guessed.clear();
+    currentPosition = 0;
+    errors = 0;
+    hintsUsed = 0;
+    usedLetterIndexes.clear();
+    resetting = false;
 
-    document.getElementById("misses").textContent = misses;
+    document.getElementById("error-count").textContent = errors;
+    document.getElementById("hint-count").textContent = hintsUsed;
+
     document.getElementById("status").textContent = "";
+    document.getElementById("status").style.color = "#00ff00";
+
+    document.getElementById("countdown").textContent = "";
+
+    document.getElementById("hint-btn").disabled = false;
 
     renderPhrase();
-    renderAlphabet();
+    renderLetters();
   }
 
+
+  // ============================================================
+  // GET LETTERS NEEDED FOR PUZZLE
+  // ============================================================
+
+  function getLetterBank() {
+
+    return phrase
+      .toUpperCase()
+      .split("")
+      .filter(char => /[A-Z]/.test(char))
+      .sort();
+
+  }
+
+
+  // ============================================================
+  // RENDER THE HIDDEN PHRASE
+  // ============================================================
+
   function renderPhrase() {
-    const phraseContainer = document.getElementById("phrase");
-    phraseContainer.innerHTML = "";
+
+    const container = document.getElementById("phrase");
+
+    container.innerHTML = "";
 
     const words = phrase.split(" ");
 
-    words.forEach(word => {
-      const wordSpan = document.createElement("span");
-      wordSpan.className = "word-block";
+    let globalLetterPosition = 0;
 
-      word.split("").forEach((letter,i) => {
-        const upper = letter.toUpperCase();
-        if (guessed.has(upper)) {
-          wordSpan.innerHTML += upper + " ";
-        } else {
-          wordSpan.innerHTML += (letterToGlyph[upper] || letter) + " ";
+    words.forEach(word => {
+
+      const wordBlock = document.createElement("span");
+
+      wordBlock.className = "word-block";
+
+      for (let i = 0; i < word.length; i++) {
+
+        const char = word[i];
+
+        // Letters
+        if (/[A-Z]/i.test(char)) {
+
+          const slot = document.createElement("span");
+
+          slot.className = "letter-slot";
+
+          if (globalLetterPosition < currentPosition) {
+
+            slot.textContent = char.toUpperCase();
+
+          } else {
+
+            slot.textContent = "_";
+
+          }
+
+          wordBlock.appendChild(slot);
+
+          globalLetterPosition++;
+
         }
-      });
-      phraseContainer.appendChild(wordSpan);
+
+        // Punctuation
+        else {
+
+          const punctuation = document.createElement("span");
+
+          punctuation.className = "punctuation";
+
+          punctuation.textContent = char;
+
+          wordBlock.appendChild(punctuation);
+
+        }
+
+      }
+
+      container.appendChild(wordBlock);
+
     });
   }
 
-  function renderAlphabet() {
-    const container = document.getElementById("alphabet-container");
+
+  // ============================================================
+  // RENDER LETTER BANK
+  // ============================================================
+
+  function renderLetters() {
+
+    const container =
+      document.getElementById("letter-container");
+
     container.innerHTML = "";
 
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(l => {
-      const btn = document.createElement("button");
-      btn.textContent = l;
-      btn.className = "letter-btn";
-      btn.disabled = guessed.has(l);
-      btn.onclick = () => {
-        guessed.add(l);
-        // reveal glyphs corresponding to guessed letter
-        phrase.split("").forEach((ch,i) => {
-          if (ch.toUpperCase() === l) {
-            revealed[i] = ch;
-          }
-        });
+    const letters = getLetterBank();
 
-        if (!phrase.toUpperCase().includes(l)) {
-          misses++;
-          document.getElementById("misses").textContent = misses;
-          if (misses >= 5) {
-            document.getElementById("status").innerHTML = "TOO MANY FAILED ATTEMPTS.<br/>DATA PANEL RESETTING...";
-            document.getElementById("status").style.color = "#ff0000";
-            disableAllButtons();
-            setTimeout(initGame, 6000);
-            return;
-          }
-        }
+    letters.forEach((letter, index) => {
 
-        renderPhrase();
-        renderAlphabet();
-        checkWin();
-      };
-      container.appendChild(btn);
+      const button = document.createElement("button");
+
+      button.textContent = letter;
+      button.className = "letter-btn";
+
+      if (usedLetterIndexes.has(index)) {
+
+        button.disabled = true;
+        button.classList.add("used");
+
+      }
+
+      button.onclick = () =>
+        selectLetter(letter, index, button);
+
+      container.appendChild(button);
+
     });
+
   }
+
+
+  // ============================================================
+  // HANDLE LETTER SELECTION
+  // ============================================================
+
+  function selectLetter(letter, index, button) {
+
+    if (resetting || button.disabled) {
+      return;
+    }
+
+    const expectedLetter =
+      phrase
+        .toUpperCase()
+        .replace(/[^A-Z]/g, "")[currentPosition];
+
+
+    // ----------------------------------------------------------
+    // CORRECT LETTER
+    // ----------------------------------------------------------
+
+    if (letter === expectedLetter) {
+
+      usedLetterIndexes.add(index);
+
+      currentPosition++;
+
+      button.disabled = true;
+      button.classList.add("used");
+
+      renderPhrase();
+
+      checkWin();
+
+    }
+
+
+      // ----------------------------------------------------------
+      // WRONG LETTER
+    // ----------------------------------------------------------
+
+    else {
+
+      errors++;
+
+      document.getElementById("error-count").textContent =
+        errors;
+
+      button.classList.add("wrong");
+
+      setTimeout(() => {
+
+        button.classList.remove("wrong");
+
+      }, 400);
+
+      if (errors >= MAX_ERRORS) {
+
+        startResetCountdown();
+
+      }
+
+    }
+
+  }
+
+
+  // ============================================================
+  // USE HINT
+  // ============================================================
+
+  function useHint() {
+
+    if (resetting || hintsUsed >= MAX_HINTS) {
+      return;
+    }
+
+    const lettersOnly =
+      phrase
+        .toUpperCase()
+        .replace(/[^A-Z]/g, "");
+
+    const expectedLetter =
+      lettersOnly[currentPosition];
+
+    const letters = getLetterBank();
+
+
+    // Find the first unused copy of the correct letter
+    let correctIndex = -1;
+
+    for (let i = 0; i < letters.length; i++) {
+
+      if (
+        letters[i] === expectedLetter &&
+        !usedLetterIndexes.has(i)
+      ) {
+
+        correctIndex = i;
+        break;
+
+      }
+
+    }
+
+    if (correctIndex === -1) {
+      return;
+    }
+
+
+    // Reveal the letter
+    usedLetterIndexes.add(correctIndex);
+
+    currentPosition++;
+
+    hintsUsed++;
+
+    document.getElementById("hint-count").textContent =
+      hintsUsed;
+
+
+    renderPhrase();
+    renderLetters();
+
+
+    // Disable after 3 hints
+    if (hintsUsed >= MAX_HINTS) {
+
+      document.getElementById("hint-btn").disabled = true;
+
+    }
+
+    checkWin();
+
+  }
+
+
+  // ============================================================
+  // CHECK FOR WIN
+  // ============================================================
 
   function checkWin() {
-    const normalized = revealed.map(ch => {
-      if (Object.values(letterToGlyph).includes(ch)) return '_';
-      return ch;
-    }).join('').replace(/\s/g,'').toUpperCase();
 
-    const solutionNormalized = phrase.replace(/\s/g,'').toUpperCase();
+    const totalLetters =
+      phrase.replace(/[^A-Z]/gi, "").length;
 
-    if (normalized === solutionNormalized) {
-      document.getElementById("status").innerHTML = 'MESSAGE DECODED.';
-      document.getElementById("status").style.color = "#00ff00";
-      disableAllButtons();
+    if (currentPosition >= totalLetters) {
+
+      document.getElementById("status").textContent =
+        "MESSAGE DECODED.";
+
+      document.getElementById("status").style.color =
+        "#00ff00";
+
+      document
+        .querySelectorAll(".letter-btn")
+        .forEach(button => button.disabled = true);
+
+      document.getElementById("hint-btn").disabled = true;
     }
+
   }
 
-  function disableAllButtons() {
-    document.querySelectorAll('.letter-btn').forEach(btn => btn.disabled = true);
+
+  // ============================================================
+  // RESET COUNTDOWN
+  // ============================================================
+
+  function startResetCountdown() {
+
+    resetting = true;
+
+    document
+      .querySelectorAll(".letter-btn")
+      .forEach(button => button.disabled = true);
+
+    document.getElementById("hint-btn").disabled = true;
+
+    document.getElementById("status").textContent =
+      "TOO MANY FAILED ATTEMPTS.";
+
+    document.getElementById("status").style.color =
+      "#ff0000";
+
+    let seconds = RESET_SECONDS;
+
+    document.getElementById("countdown").textContent =
+      "DATA PANEL RESETTING...";
+
+
+    const interval = setInterval(() => {
+
+      if (seconds > 0) {
+
+        document.getElementById("countdown").textContent =
+          "DATA PANEL RESETTING... " + seconds;
+
+        seconds--;
+
+      } else {
+
+        clearInterval(interval);
+
+        initGame();
+
+      }
+
+    }, 1000);
+
   }
+
+
+  // ============================================================
+  // START
+  // ============================================================
 
   initGame();
+
 </script>
 
 </body>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--cryptogram-->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -79,13 +80,18 @@
           font-size: 18px;
           font-weight: bold;
       }
+
+      #countdown {
+          font-size: 20px;
+          margin-top: 8px;
+      }
   </style>
 </head>
 
 <body>
 
 <div id="game-container">
-<!--  <h2>Why was the stormtrooper promoted?</h2>-->
+  <!--  <h2>Why was the stormtrooper promoted?</h2>-->
   <p>DECODE THE MESSAGE TO REVEAL THE SIGNAL</p>
 
   <div id="phrase"></div>
@@ -95,17 +101,24 @@
   <div id="alphabet-container"></div>
 
   <div id="status"></div>
+  <div id="countdown"></div>
 </div>
 
 <script>
   const phrase = "WE HEAR YOU NOW.";
   const glyphSet = ["⟒","⍜","⟟","⌖","⟊","⋔","⟴","⧫","◬","❖","⌬","⍦","⧗","⟆","⧘","⧙","⧚","⧛","⬡","⬢","⬣","⬤","⟁","⟡","✦","✧"];
   const letterToGlyph = {};
-  [...new Set(phrase.replace(/[^A-Z]/g, ''))].forEach((l,i) => { letterToGlyph[l] = glyphSet[i % glyphSet.length]; });
+
+  [...new Set(phrase.replace(/[^A-Z]/g, ''))].forEach((l,i) => {
+    letterToGlyph[l] = glyphSet[i % glyphSet.length];
+  });
+
+  const RESET_SECONDS = 5;
 
   let revealed = [];
   let misses = 0;
   let guessed = new Set();
+  let resetting = false;
 
   function initGame() {
     revealed = phrase.split("").map(ch => {
@@ -115,9 +128,12 @@
 
     misses = 0;
     guessed.clear();
+    resetting = false;
 
     document.getElementById("misses").textContent = misses;
     document.getElementById("status").textContent = "";
+    document.getElementById("status").style.color = "#00ff00";
+    document.getElementById("countdown").textContent = "";
 
     renderPhrase();
     renderAlphabet();
@@ -135,12 +151,14 @@
 
       word.split("").forEach((letter,i) => {
         const upper = letter.toUpperCase();
+
         if (guessed.has(upper)) {
           wordSpan.innerHTML += upper + " ";
         } else {
           wordSpan.innerHTML += (letterToGlyph[upper] || letter) + " ";
         }
       });
+
       phraseContainer.appendChild(wordSpan);
     });
   }
@@ -151,12 +169,17 @@
 
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(l => {
       const btn = document.createElement("button");
+
       btn.textContent = l;
       btn.className = "letter-btn";
       btn.disabled = guessed.has(l);
+
       btn.onclick = () => {
+        if (resetting) return;
+
         guessed.add(l);
-        // reveal glyphs corresponding to guessed letter
+
+        // Reveal glyphs corresponding to guessed letter
         phrase.split("").forEach((ch,i) => {
           if (ch.toUpperCase() === l) {
             revealed[i] = ch;
@@ -165,12 +188,11 @@
 
         if (!phrase.toUpperCase().includes(l)) {
           misses++;
+
           document.getElementById("misses").textContent = misses;
+
           if (misses >= 5) {
-            document.getElementById("status").innerHTML = "TOO MANY FAILED ATTEMPTS.<br/>DATA PANEL RESETTING...";
-            document.getElementById("status").style.color = "#ff0000";
-            disableAllButtons();
-            setTimeout(initGame, 6000);
+            startResetCountdown();
             return;
           }
         }
@@ -179,6 +201,7 @@
         renderAlphabet();
         checkWin();
       };
+
       container.appendChild(btn);
     });
   }
@@ -194,12 +217,46 @@
     if (normalized === solutionNormalized) {
       document.getElementById("status").innerHTML = 'MESSAGE DECODED.';
       document.getElementById("status").style.color = "#00ff00";
+
       disableAllButtons();
     }
   }
 
   function disableAllButtons() {
-    document.querySelectorAll('.letter-btn').forEach(btn => btn.disabled = true);
+    document
+      .querySelectorAll('.letter-btn')
+      .forEach(btn => btn.disabled = true);
+  }
+
+  function startResetCountdown() {
+    resetting = true;
+
+    disableAllButtons();
+
+    document.getElementById("status").textContent =
+      "TOO MANY FAILED ATTEMPTS.";
+
+    document.getElementById("status").style.color =
+      "#ff0000";
+
+    let seconds = RESET_SECONDS;
+
+    document.getElementById("countdown").textContent =
+      "DATA PANEL RESETTING...";
+
+    const interval = setInterval(() => {
+
+      document.getElementById("countdown").textContent =
+        "REINITIALIZING: " + seconds;
+
+      seconds--;
+
+      if (seconds < 0) {
+        clearInterval(interval);
+        initGame();
+      }
+
+    }, 1000);
   }
 
   initGame();

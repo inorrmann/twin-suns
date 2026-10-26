@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--letter order -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The builder's journal</title>
+  <title>The Builder's Journal</title>
 
   <style>
       html,
@@ -35,14 +36,14 @@
       }
 
       #phrase {
-          font-size: 20px;
-          margin: 20px 0;
-          white-space: normal;
+          font-size: 22px;
+          margin: 25px 0;
+          color: #ffff00;
           display: flex;
           flex-wrap: wrap;
-          gap: 35px;
-          color: #ffff00;
           justify-content: center;
+          gap: 18px;
+          line-height: 1.8;
       }
 
       .word-block {
@@ -50,16 +51,33 @@
           display: inline-block;
       }
 
+      .letter-slot {
+          display: inline-block;
+          width: 18px;
+          text-align: center;
+          margin: 0 2px;
+      }
+
+      .punctuation {
+          display: inline-block;
+          width: auto;
+          margin: 0 1px;
+      }
+
       #alphabet-container {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
-          gap: 10px;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
           margin-top: 20px;
       }
 
       .letter-btn {
+          width: 40px;
+          height: 40px;
           padding: 8px;
           font-size: 16px;
+          font-family: 'Courier New', monospace;
           background-color: #000;
           color: #00ff00;
           border: 1px solid #00ff00;
@@ -67,16 +85,65 @@
           cursor: pointer;
       }
 
-      .letter-btn:disabled {
+      .letter-btn:hover:not(:disabled) {
           background-color: #003300;
-          color: #004400;
-          border-color: #004400;
+      }
+
+      .letter-btn:disabled {
+          background-color: #111;
+          color: #444;
+          border-color: #333;
+          cursor: not-allowed;
+      }
+
+      .letter-btn.wrong {
+          color: #ff0000;
+          border-color: #ff0000;
+          background-color: #220000;
+      }
+
+      #stats {
+          margin-top: 20px;
+          font-size: 16px;
+      }
+
+      #hint-container {
+          margin-top: 35px;
+      }
+
+      #hint-btn {
+          padding: 10px 20px;
+          font-size: 16px;
+          font-family: 'Courier New', monospace;
+          font-weight: bold;
+          background-color: #000;
+          color: #ffff00;
+          border: 1px solid #ffff00;
+          border-radius: 4px;
+          cursor: pointer;
+      }
+
+      #hint-btn:hover:not(:disabled) {
+          background-color: #333300;
+      }
+
+      #hint-btn:disabled {
+          background-color: #111;
+          color: #444;
+          border-color: #333;
           cursor: not-allowed;
       }
 
       #status {
           margin-top: 20px;
           font-size: 18px;
+          font-weight: bold;
+          min-height: 45px;
+      }
+
+      #countdown {
+          font-size: 18px;
+          margin-top: 8px;
           font-weight: bold;
       }
   </style>
@@ -85,124 +152,457 @@
 <body>
 
 <div id="game-container">
-  <h2>The builder's journal</h2>
-  <p>DECODE THE MESSAGE SAVED</p>
+
+  <h2>The Builder's Journal</h2>
+
+  <p>TAP THE LETTERS IN THE CORRECT ORDER TO REVEAL THE MESSAGE</p>
 
   <div id="phrase"></div>
 
-  <p>MISSED LETTERS: <span id="misses">0</span> / 5</p>
+  <div id="stats">
+    ERRORS: <span id="miss-count">0</span> / 5
+    &nbsp;&nbsp;|&nbsp;&nbsp;
+    HINTS: <span id="hint-count">0</span> / 3
+  </div>
 
   <div id="alphabet-container"></div>
 
+  <div id="hint-container">
+    <button id="hint-btn" onclick="useHint()">HINT</button>
+  </div>
+
   <div id="status"></div>
+  <div id="countdown"></div>
+
 </div>
 
 <script>
-  const phrase = "EVERY HOME BEGINS WITH A CHOICE.";
-  const glyphSet = ["⟒","⍜","⟟","⌖","⟊","⋔","⟴","⧫","◬","❖","⌬","⍦","⧗","⟆","⧘","⧙","⧚","⧛","⬡","⬢","⬣","⬤","⟁","⟡","✦","✧"];
-  const letterToGlyph = {};
-  [...new Set(phrase.replace(/[^A-Z]/g, ''))].forEach((l,i) => { letterToGlyph[l] = glyphSet[i % glyphSet.length]; });
 
-  let revealed = [];
+  // ============================================================
+  // PUZZLE
+  // ============================================================
+
+  const phrase = "EVERY HOME BEGINS WITH A CHOICE.";
+
+  const MAX_MISSES = 5;
+  const MAX_HINTS = 3;
+  const RESET_SECONDS = 5;
+
+
+  // ============================================================
+  // GAME STATE
+  // ============================================================
+
+  let currentPosition = 0;
   let misses = 0;
-  let guessed = new Set();
+  let hintsUsed = 0;
+
+  // Tracks individual buttons that have been correctly selected
+  let usedButtons = new Set();
+
+  let resetting = false;
+
+
+  // ============================================================
+  // GET LETTERS ONLY
+  // ============================================================
+
+  function getLettersOnly() {
+
+    return phrase
+      .toUpperCase()
+      .replace(/[^A-Z]/g, "");
+
+  }
+
+
+  // ============================================================
+  // GET LETTER BANK
+  // Alphabetical, with duplicates preserved
+  // ============================================================
+
+  function getLetterBank() {
+
+    return phrase
+      .toUpperCase()
+      .split("")
+      .filter(char => /[A-Z]/.test(char))
+      .sort();
+
+  }
+
+
+  // ============================================================
+  // INITIALIZE / RESET
+  // ============================================================
 
   function initGame() {
-    revealed = phrase.split("").map(ch => {
-      if (/[A-Z]/.test(ch)) return letterToGlyph[ch];
-      return ch;
-    });
 
+    currentPosition = 0;
     misses = 0;
-    guessed.clear();
+    hintsUsed = 0;
 
-    document.getElementById("misses").textContent = misses;
+    usedButtons.clear();
+
+    resetting = false;
+
+    document.getElementById("miss-count").textContent = misses;
+    document.getElementById("hint-count").textContent = hintsUsed;
+
     document.getElementById("status").textContent = "";
+    document.getElementById("status").style.color = "#00ff00";
+
+    document.getElementById("countdown").textContent = "";
+
+    document.getElementById("hint-btn").disabled = false;
 
     renderPhrase();
     renderAlphabet();
+
   }
 
+
+  // ============================================================
+  // RENDER PHRASE
+  // ============================================================
+
   function renderPhrase() {
-    const phraseContainer = document.getElementById("phrase");
-    phraseContainer.innerHTML = "";
+
+    const container = document.getElementById("phrase");
+
+    container.innerHTML = "";
 
     const words = phrase.split(" ");
 
-    words.forEach(word => {
-      const wordSpan = document.createElement("span");
-      wordSpan.className = "word-block";
+    let letterPosition = 0;
 
-      word.split("").forEach((letter,i) => {
-        const upper = letter.toUpperCase();
-        if (guessed.has(upper)) {
-          wordSpan.innerHTML += upper + " ";
-        } else {
-          wordSpan.innerHTML += (letterToGlyph[upper] || letter) + " ";
+    words.forEach(word => {
+
+      const wordBlock = document.createElement("span");
+
+      wordBlock.className = "word-block";
+
+      for (let i = 0; i < word.length; i++) {
+
+        const char = word[i];
+
+        // LETTER
+        if (/[A-Z]/i.test(char)) {
+
+          const slot = document.createElement("span");
+
+          slot.className = "letter-slot";
+
+          if (letterPosition < currentPosition) {
+
+            slot.textContent = char.toUpperCase();
+
+          } else {
+
+            slot.textContent = "_";
+
+          }
+
+          wordBlock.appendChild(slot);
+
+          letterPosition++;
+
         }
-      });
-      phraseContainer.appendChild(wordSpan);
+
+        // PUNCTUATION
+        else {
+
+          const punctuation = document.createElement("span");
+
+          punctuation.className = "punctuation";
+
+          punctuation.textContent = char;
+
+          wordBlock.appendChild(punctuation);
+
+        }
+
+      }
+
+      container.appendChild(wordBlock);
+
     });
+
   }
+
+
+  // ============================================================
+  // RENDER LETTER BANK
+  // ============================================================
 
   function renderAlphabet() {
+
     const container = document.getElementById("alphabet-container");
+
     container.innerHTML = "";
 
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(l => {
-      const btn = document.createElement("button");
-      btn.textContent = l;
-      btn.className = "letter-btn";
-      btn.disabled = guessed.has(l);
-      btn.onclick = () => {
-        guessed.add(l);
-        // reveal glyphs corresponding to guessed letter
-        phrase.split("").forEach((ch,i) => {
-          if (ch.toUpperCase() === l) {
-            revealed[i] = ch;
-          }
-        });
+    const letters = getLetterBank();
 
-        if (!phrase.toUpperCase().includes(l)) {
-          misses++;
-          document.getElementById("misses").textContent = misses;
-          if (misses >= 5) {
-            document.getElementById("status").innerHTML = "TOO MANY FAILED ATTEMPTS.<br/>DATA PANEL RESETTING...";
-            document.getElementById("status").style.color = "#ff0000";
-            disableAllButtons();
-            setTimeout(initGame, 6000);
-            return;
-          }
-        }
+    letters.forEach((letter, index) => {
 
-        renderPhrase();
-        renderAlphabet();
-        checkWin();
+      const button = document.createElement("button");
+
+      button.textContent = letter;
+
+      button.className = "letter-btn";
+
+      button.dataset.index = index;
+
+      if (usedButtons.has(index)) {
+
+        button.disabled = true;
+
+      }
+
+      button.onclick = () => {
+
+        selectLetter(letter, index, button);
+
       };
-      container.appendChild(btn);
+
+      container.appendChild(button);
+
     });
+
   }
+
+
+  // ============================================================
+  // HANDLE LETTER SELECTION
+  // ============================================================
+
+  function selectLetter(letter, index, button) {
+
+    if (resetting || button.disabled) {
+      return;
+    }
+
+    const lettersOnly = getLettersOnly();
+
+    const expectedLetter = lettersOnly[currentPosition];
+
+
+    // ==========================================================
+    // CORRECT LETTER
+    // ==========================================================
+
+    if (letter === expectedLetter) {
+
+      usedButtons.add(index);
+
+      currentPosition++;
+
+      button.disabled = true;
+
+      renderPhrase();
+
+      checkWin();
+
+    }
+
+
+      // ==========================================================
+      // WRONG LETTER
+    // ==========================================================
+
+    else {
+
+      misses++;
+
+      document.getElementById("miss-count").textContent = misses;
+
+      // Brief red flash
+      button.classList.add("wrong");
+
+      setTimeout(() => {
+
+        button.classList.remove("wrong");
+
+      }, 400);
+
+
+      // ========================================================
+      // TOO MANY ERRORS
+      // ========================================================
+
+      if (misses >= MAX_MISSES) {
+
+        startResetCountdown();
+
+      }
+
+    }
+
+  }
+
+
+  // ============================================================
+  // HINT
+  // ============================================================
+
+  function useHint() {
+
+    if (resetting || hintsUsed >= MAX_HINTS) {
+      return;
+    }
+
+    const lettersOnly = getLettersOnly();
+
+    const expectedLetter = lettersOnly[currentPosition];
+
+    const letters = getLetterBank();
+
+    // Find the first unused button containing the correct letter
+    let buttonIndex = -1;
+
+    for (let i = 0; i < letters.length; i++) {
+
+      if (
+        letters[i] === expectedLetter &&
+        !usedButtons.has(i)
+      ) {
+
+        buttonIndex = i;
+        break;
+
+      }
+
+    }
+
+    if (buttonIndex === -1) {
+      return;
+    }
+
+
+    // Mark the correct letter as used
+    usedButtons.add(buttonIndex);
+
+    currentPosition++;
+
+    hintsUsed++;
+
+    document.getElementById("hint-count").textContent = hintsUsed;
+
+
+    // Update puzzle
+    renderPhrase();
+
+    renderAlphabet();
+
+
+    // Disable hints after 3
+    if (hintsUsed >= MAX_HINTS) {
+
+      document.getElementById("hint-btn").disabled = true;
+
+    }
+
+    checkWin();
+
+  }
+
+
+  // ============================================================
+  // CHECK WIN
+  // ============================================================
 
   function checkWin() {
-    const normalized = revealed.map(ch => {
-      if (Object.values(letterToGlyph).includes(ch)) return '_';
-      return ch;
-    }).join('').replace(/\s/g,'').toUpperCase();
 
-    const solutionNormalized = phrase.replace(/\s/g,'').toUpperCase();
+    const lettersOnly = getLettersOnly();
 
-    if (normalized === solutionNormalized) {
-      document.getElementById("status").innerHTML = 'MESSAGE DECODED.';
-      document.getElementById("status").style.color = "#00ff00";
+    if (currentPosition >= lettersOnly.length) {
+
+      document.getElementById("status").textContent =
+        "MESSAGE DECODED.";
+
+      document.getElementById("status").style.color =
+        "#00ff00";
+
       disableAllButtons();
+
+      document.getElementById("hint-btn").disabled = true;
+
     }
+
   }
+
+
+  // ============================================================
+  // RESET COUNTDOWN
+  // ============================================================
+
+  function startResetCountdown() {
+
+    resetting = true;
+
+    disableAllButtons();
+
+    document.getElementById("hint-btn").disabled = true;
+
+    document.getElementById("status").innerHTML =
+      "TOO MANY FAILED ATTEMPTS.";
+
+    document.getElementById("status").style.color =
+      "#ff0000";
+
+    let seconds = RESET_SECONDS;
+
+    document.getElementById("countdown").textContent =
+      "REINITIALIZING: " + seconds;
+
+
+    const interval = setInterval(() => {
+
+      seconds--;
+
+      if (seconds > 0) {
+
+        document.getElementById("countdown").textContent =
+          "REINITIALIZING: " + seconds;
+
+      }
+
+      else {
+
+        clearInterval(interval);
+
+        initGame();
+
+      }
+
+    }, 1000);
+
+  }
+
+
+  // ============================================================
+  // DISABLE ALL BUTTONS
+  // ============================================================
 
   function disableAllButtons() {
-    document.querySelectorAll('.letter-btn').forEach(btn => btn.disabled = true);
+
+    document
+      .querySelectorAll(".letter-btn")
+      .forEach(button => {
+
+        button.disabled = true;
+
+      });
+
   }
 
+
+  // ============================================================
+  // START GAME
+  // ============================================================
+
   initGame();
+
 </script>
 
 </body>
