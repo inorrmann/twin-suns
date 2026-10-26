@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--cryptogram-->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,6 +79,12 @@
           margin-top: 20px;
           font-size: 18px;
           font-weight: bold;
+          min-height: 45px;
+      }
+
+      #countdown {
+          font-size: 20px;
+          margin-top: 8px;
       }
   </style>
 </head>
@@ -95,82 +102,122 @@
   <div id="alphabet-container"></div>
 
   <div id="status"></div>
+  <div id="countdown"></div>
 </div>
 
 <script>
-  const phrase = "HE FINALLY HIT HIS TARGET... WITH THE CODE.";
-  const glyphSet = ["⟒","⍜","⟟","⌖","⟊","⋔","⟴","⧫","◬","❖","⌬","⍦","⧗","⟆","⧘","⧙","⧚","⧛","⬡","⬢","⬣","⬤","⟁","⟡","✦","✧"];
+  const phrase = "HE FINALLY HIT HIS TARGET... FOR ONCE IT WASN'T A REBEL.";
+
+  const glyphSet = [
+    "⟒","⍜","⟟","⌖","⟊","⋔","⟴","⧫","◬","❖","⌬","⍦",
+    "⧗","⟆","⧘","⧙","⧚","⧛","⬡","⬢","⬣","⬤","⟁","⟡","✦","✧"
+  ];
+
   const letterToGlyph = {};
-  [...new Set(phrase.replace(/[^A-Z]/g, ''))].forEach((l,i) => { letterToGlyph[l] = glyphSet[i % glyphSet.length]; });
+
+  [...new Set(phrase.replace(/[^A-Z]/g, ''))].forEach((l, i) => {
+    letterToGlyph[l] = glyphSet[i % glyphSet.length];
+  });
+
+  const MAX_MISSES = 5;
+  const RESET_SECONDS = 5;
 
   let revealed = [];
   let misses = 0;
   let guessed = new Set();
+  let resetting = false;
 
   function initGame() {
+
     revealed = phrase.split("").map(ch => {
-      if (/[A-Z]/.test(ch)) return letterToGlyph[ch];
+      if (/[A-Z]/.test(ch)) {
+        return letterToGlyph[ch];
+      }
       return ch;
     });
 
     misses = 0;
     guessed.clear();
+    resetting = false;
 
     document.getElementById("misses").textContent = misses;
     document.getElementById("status").textContent = "";
+    document.getElementById("status").style.color = "#00ff00";
+    document.getElementById("countdown").textContent = "";
 
     renderPhrase();
     renderAlphabet();
   }
 
   function renderPhrase() {
+
     const phraseContainer = document.getElementById("phrase");
+
     phraseContainer.innerHTML = "";
 
     const words = phrase.split(" ");
 
     words.forEach(word => {
+
       const wordSpan = document.createElement("span");
       wordSpan.className = "word-block";
 
-      word.split("").forEach((letter,i) => {
+      word.split("").forEach((letter, i) => {
+
         const upper = letter.toUpperCase();
+
         if (guessed.has(upper)) {
           wordSpan.innerHTML += upper + " ";
         } else {
           wordSpan.innerHTML += (letterToGlyph[upper] || letter) + " ";
         }
+
       });
+
       phraseContainer.appendChild(wordSpan);
+
     });
   }
 
   function renderAlphabet() {
+
     const container = document.getElementById("alphabet-container");
+
     container.innerHTML = "";
 
     "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(l => {
+
       const btn = document.createElement("button");
+
       btn.textContent = l;
       btn.className = "letter-btn";
       btn.disabled = guessed.has(l);
+
       btn.onclick = () => {
+
+        if (resetting) {
+          return;
+        }
+
         guessed.add(l);
-        // reveal glyphs corresponding to guessed letter
-        phrase.split("").forEach((ch,i) => {
+
+        // Reveal glyphs corresponding to guessed letter
+        phrase.split("").forEach((ch, i) => {
+
           if (ch.toUpperCase() === l) {
             revealed[i] = ch;
           }
+
         });
 
         if (!phrase.toUpperCase().includes(l)) {
+
           misses++;
+
           document.getElementById("misses").textContent = misses;
-          if (misses >= 5) {
-            document.getElementById("status").innerHTML = "TOO MANY FAILED ATTEMPTS.<br/>DATA PANEL RESETTING...";
-            document.getElementById("status").style.color = "#ff0000";
-            disableAllButtons();
-            setTimeout(initGame, 6000);
+
+          if (misses >= MAX_MISSES) {
+            startResetCountdown();
             return;
           }
         }
@@ -178,31 +225,86 @@
         renderPhrase();
         renderAlphabet();
         checkWin();
+
       };
+
       container.appendChild(btn);
+
     });
   }
 
   function checkWin() {
-    const normalized = revealed.map(ch => {
-      if (Object.values(letterToGlyph).includes(ch)) return '_';
-      return ch;
-    }).join('').replace(/\s/g,'').toUpperCase();
 
-    const solutionNormalized = phrase.replace(/\s/g,'').toUpperCase();
+    const normalized = revealed.map(ch => {
+
+      if (Object.values(letterToGlyph).includes(ch)) {
+        return '_';
+      }
+
+      return ch;
+
+    }).join('').replace(/\s/g, '').toUpperCase();
+
+    const solutionNormalized = phrase
+      .replace(/\s/g, '')
+      .toUpperCase();
 
     if (normalized === solutionNormalized) {
-      document.getElementById("status").innerHTML = 'MESSAGE DECODED.';
-      document.getElementById("status").style.color = "#00ff00";
+
+      document.getElementById("status").innerHTML =
+        'MESSAGE DECODED.';
+
+      document.getElementById("status").style.color =
+        "#00ff00";
+
       disableAllButtons();
     }
   }
 
+  function startResetCountdown() {
+
+    resetting = true;
+
+    disableAllButtons();
+
+    document.getElementById("status").innerHTML =
+      "TOO MANY FAILED ATTEMPTS.";
+
+    document.getElementById("status").style.color =
+      "#ff0000";
+
+    let seconds = RESET_SECONDS;
+
+    document.getElementById("countdown").textContent =
+      "DATA PANEL RESETTING...";
+
+    const interval = setInterval(() => {
+
+      document.getElementById("countdown").textContent =
+        "REINITIALIZING: " + seconds;
+
+      seconds--;
+
+      if (seconds < 0) {
+
+        clearInterval(interval);
+
+        initGame();
+      }
+
+    }, 1000);
+  }
+
   function disableAllButtons() {
-    document.querySelectorAll('.letter-btn').forEach(btn => btn.disabled = true);
+
+    document
+      .querySelectorAll('.letter-btn')
+      .forEach(btn => btn.disabled = true);
+
   }
 
   initGame();
+
 </script>
 
 </body>

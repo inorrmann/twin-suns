@@ -2,12 +2,11 @@ import { useParams } from "react-router-dom";
 import A1 from "../../components/Archives/Settlers/A1.tsx";
 import A2 from "../../components/Archives/Settlers/A2.tsx";
 import A3 from "../../components/Archives/Settlers/A3.tsx";
+import A4 from "../../components/Archives/Settlers/A4.tsx";
 
-import M1 from "../../components/Missions/20260221/M2.tsx";
 import M2 from "../../components/Missions/20260221/M2.tsx";
 import M4 from "../../components/Missions/20260221/M4.tsx";
 import M6 from "../../components/Missions/20260221/M6.tsx";
-import M8 from "../../components/Missions/20260221/M8.tsx";
 
 export default function SettlersArchives() {
   const { id } = useParams();
@@ -15,9 +14,9 @@ export default function SettlersArchives() {
   const archiveArray = [
     // Red tags with black writing
     {
-      // *** Tag at home: 1 - Table  *** NOT LINKED
+      // Cantina by Kloonta Classic
       id: 'part-1',
-      archive: <M1/>
+      archive: <A4/>
     },
     {
       id: '2',
@@ -45,15 +44,9 @@ export default function SettlersArchives() {
       archive: <M6/>
     },
     {
-      // Homestead door
+      // *** Tag at home - it goes somewhere in the homestead
       id: 'part-7',
       archive: <A3/>
-    },
-    {
-      // *** Cantina - by Kloonta Classic *** NOT LINKED
-      id: '8',
-      // id: 'part-8',
-      archive: <M8/>
     }
   ]
 

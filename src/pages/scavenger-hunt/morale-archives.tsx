@@ -24,7 +24,7 @@ export default function MoraleArchives() {
       archive: <A2/>
     },
     {
-      // Tage at home: 3 - droid
+      // Tag at home: 3 - droid
       id: '01110100-01101000-01110010-01100101-01100101',
       archive: <A3/>
     },
